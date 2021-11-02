@@ -1,6 +1,5 @@
-def f10():
+def f10(myint):
     """McCabe rating: 11"""
-    myint = 2
     if myint == 5:
         return myint
     elif myint == 6:
