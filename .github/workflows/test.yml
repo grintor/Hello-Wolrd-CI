@@ -30,7 +30,7 @@ jobs:
 
     - name: Test with bandit
       run: |
-        bandit -x .\tests -r .
+        bandit -x ./tests -r .
 
     - name: Commit report
       run: |
