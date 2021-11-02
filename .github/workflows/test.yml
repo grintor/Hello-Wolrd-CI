@@ -30,3 +30,4 @@ jobs:
         git config --global user.email 'grintor@users.noreply.github.com'
         git commit -am "Automated CI report update"
         git push
+        exit 0
