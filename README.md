@@ -2,7 +2,7 @@
 A test of GitHub Actions with pylint and coverage.py and various other tools
 
 
-just run "pytest" in the repo root and look in results or push to github to have the tags updated automatically.
+Just run "pytest" in the repo root and look in results or push to github to have the tags updated automatically.
 
 [![build status](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/test.yml/badge.svg)](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/test.yml)
 [![code coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/tests/results/covered_shield.json)](https://github.com/grintor/Hello-Wolrd-CI/blob/main/tests/results/coverage.txt)
