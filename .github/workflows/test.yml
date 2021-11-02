@@ -17,13 +17,16 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.8'
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         python -m pip install -r requirements.txt
-    - name: Test with pytest
+
+    - name: Test with bandit
       run: |
-        pytest
+        bandit -x .\tests -r .
+
     - name: Commit report
       run: |
         git config --global user.name 'CI Tests'
