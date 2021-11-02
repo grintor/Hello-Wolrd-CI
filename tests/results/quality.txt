@@ -1,0 +1,10 @@
+
+------------------------------------
+Your code has been rated at 10.00/10
+
+tion. Found 16 spaces, expected 12
+complex.py:1: [R1260(too-complex), f10] 'f10' is too complex. The McCabe rating is 11
+
+-----------------------------------
+Your code has been rated at 8.68/10
+

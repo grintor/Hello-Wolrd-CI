@@ -9,6 +9,10 @@ def test_coverage(capsys):
             subprocess.run(['coverage', 'run', '-m', 'pytest', file])
             print(file)
     subprocess.run(['coverage', 'json', '-o', 'tests/results/coverage.json', '--pretty-print'])
+    subprocess.run(['coverage', 'html', '-d', 'tests/results/coverage'])
+    report_process = subprocess.run(['coverage', 'report'], capture_output=True)
+    with open('tests/results/coverage.txt', 'wb') as f:
+        f.write(report_process.stdout)
     subprocess.run(['coverage', 'erase'])
     
     with open('tests/results/coverage.json', 'r') as f:

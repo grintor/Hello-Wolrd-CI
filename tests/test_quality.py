@@ -9,7 +9,7 @@ def test_pylint(capsys):
             for rcfile in ['additional', 'main']:
                 with warnings.catch_warnings():
                     warnings.simplefilter("ignore")
-                    results = Run([f'--rcfile=tests/conf/lint_{rcfile}.rc', file], exit=False)
+                    results = Run([f'--rcfile=tests/conf/lint_{rcfile}.rc', '--output-format=parseable:tests/results/quality.txt', file], exit=False)
                 assert results.linter.stats['error'] == 0 
                 assert results.linter.stats['fatal'] == 0
 
