@@ -1,6 +1,6 @@
 from pylint.lint import Run
 from glob import glob
-import warnings, json, subprocess
+import warnings, json, subprocess, os
 
 def test_coverage(capsys):
     subprocess.run(['coverage', 'erase'])
@@ -17,6 +17,8 @@ def test_coverage(capsys):
     
     with open('tests/results/coverage.json', 'r') as f:
         coverage_result = json.loads(f.read())
+
+    os.unlink('tests/results/coverage.json')
     
     percent_covered = round(coverage_result['totals']['percent_covered'])
 
