@@ -1,0 +1,16 @@
+{
+    "parserOptions": {
+        "ecmaFeatures": {
+            "modules": false
+        }
+    },
+    "env": {
+        "es6": true,
+        "browser": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:no-unsanitized/DOM",
+        "prettier"
+    ]
+}

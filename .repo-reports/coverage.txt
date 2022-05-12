@@ -1,6 +1,6 @@
 Name             Stmts   Miss  Cover
 ------------------------------------
-complex.py          20     11    45%
-hello_world.py       4      0   100%
+hello_world.py       2      0   100%
+is_complex.py       19      0   100%
 ------------------------------------
-TOTAL               24     11    54%
+TOTAL               21      0   100%

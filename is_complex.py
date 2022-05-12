@@ -1,5 +1,5 @@
 def f10(myint):
-    """McCabe rating: 11"""
+    # McCabe rating: 11
     if myint == 5:
         return myint
     elif myint == 6:
@@ -11,13 +11,11 @@ def f10(myint):
     elif myint == 9:
         return myint
     elif myint == 10:
-        if myint == 8:
-            while True:
-                return True
-        elif myint == 8:
-                return 8
+        if myint != 8:
+            myint = 12
+        if myint != 9:
+            return 10
     else:
         if myint == 2:
             return myint
-        return myint
     return myint

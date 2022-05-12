@@ -1,7 +1,0 @@
-************* Module complex
-complex.py:18: [W0311(bad-indentation), ] Bad indentation. Found 16 spaces, expected 12
-complex.py:1: [R1260(too-complex), f10] 'f10' is too complex. The McCabe rating is 11
-
------------------------------------
-Your code has been rated at 8.62/10
-

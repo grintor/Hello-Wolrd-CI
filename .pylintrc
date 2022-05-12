@@ -18,7 +18,7 @@ persistent=no
 
 # List of plugins (as comma separated values of python modules names) to load,
 # usually to register additional checkers.
-load-plugins=pylint_requests,pylint.extensions.mccabe
+load-plugins=pylint.extensions.mccabe
 
 # Use multiple processes to speed up Pylint.
 # DO NOT CHANGE THIS VALUES >1 HIDE RESULTS!!!!!
@@ -52,18 +52,45 @@ confidence=
 # either give multiple identifier separated by comma (,) or put this option
 # multiple time. See also the "--disable" option for examples.
 
-disable=	W,
-			R,
-			C
+enable=all
 
-enable =	trailing-comma-tuple, # accidently leaving a comma at the end of a variable assignment magically transforms your variable into a tuple
-			pointless-statement,
-			wildcard-import,
-			unreachable,
-			redefined-builtin,
-			bare-except, # using "except:" instead of "except Exception:" will cause signals to fail, (like ctrl-c or sys.exit())
-			dangerous-default-value, # using "def function(arg=[])" will stab you in the face, or worse
-			too-complex,
+disable =	locally-disabled,
+			suppressed-message,
+			old-division,
+			wrong-import-order,
+			missing-function-docstring,
+			invalid-name,
+			ungrouped-imports,
+			too-many-arguments,
+			trailing-whitespace,
+			singleton-comparison,
+			too-many-branches,
+			too-many-return-statements,
+			consider-using-in,
+			missing-module-docstring,
+			chained-comparison,
+			missing-final-newline,
+			missing-class-docstring,
+			bad-whitespace,
+			bad-continuation,
+			no-else-raise,
+			line-too-long,
+			trailing-newlines,
+			no-else-return,
+			logging-fstring-interpolation,
+			logging-not-lazy,
+			broad-except,
+			too-many-locals,
+			multiple-imports,
+			too-many-statements,
+			subprocess-run-check,
+			unsubscriptable-object, # this would be good if not for false positives. Hopefully uncomment in future versions
+			unsupported-membership-test, # this would be good if not for false positives. Hopefully uncomment in future versions
+
+
+
+
+
 
 
 
@@ -88,7 +115,7 @@ reports=no
 # respectively contain the number of errors / warnings messages and the total
 # number of statements analyzed. This is used by the global evaluation report
 # (RP0004).
-evaluation=10.0 - (error * 10) - (convention * 10) - (refactor * 10) - (warning * 10)
+evaluation=max(0, 0 if fatal else 10.0 - ((float((4 * error) + (3 * warning) + (2 * refactor) + convention) / statement) * 10))
 
 # Template used to display messages. This is a python new-style format string
 # used to format the message information. See doc for all details
@@ -193,13 +220,13 @@ ignore-imports=no
 
 # Spelling dictionary name. Available dictionaries: none. To make it working
 # install python-enchant package.
-spelling-dict=
+spelling-dict=en_US
 
 # List of comma separated words that should not be checked.
 spelling-ignore-words=
 
 # A path to a file that contains private dictionary; one word per line.
-spelling-private-dict-file=
+spelling-private-dict-file=.dictionary
 
 # Tells whether to store unknown words to indicated private dictionary in
 # --spelling-private-dict-file option instead of raising a message.

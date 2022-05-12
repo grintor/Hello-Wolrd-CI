@@ -1,0 +1,7 @@
+pytest
+pylint
+pylint_requests
+requests
+flake8
+coverage
+pre-commit
