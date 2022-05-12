@@ -28,15 +28,12 @@ distlib==0.3.4
     # via virtualenv
 filelock==3.6.0
     # via virtualenv
-flake8==4.0.1
-    # via -r requirements.in
 identify==2.5.0
     # via pre-commit
 idna==3.3
     # via requests
 importlib-metadata==4.2.0
     # via
-    #   flake8
     #   pluggy
     #   pre-commit
     #   pytest
@@ -48,9 +45,7 @@ isort==5.10.1
 lazy-object-proxy==1.7.1
     # via astroid
 mccabe==0.6.1
-    # via
-    #   flake8
-    #   pylint
+    # via pylint
 nodeenv==1.6.0
     # via pre-commit
 packaging==21.3
@@ -65,10 +60,8 @@ pre-commit==2.19.0
     # via -r requirements.in
 py==1.11.0
     # via pytest
-pycodestyle==2.8.0
-    # via flake8
-pyflakes==2.4.0
-    # via flake8
+pyenchant==3.2.2
+    # via -r requirements.in
 pylint==2.13.8
     # via
     #   -r requirements.in
