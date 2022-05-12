@@ -22,8 +22,8 @@ def main():
                 )
                 report = f.getvalue()
 
-            if "global_note" in results.linter.stats:
-                score = results.linter.stats["global_note"]
+            if results.linter.stats.global_note:
+                score = results.linter.stats.global_note
                 scores.append(score)
                 if score < 10:
                     with open(
