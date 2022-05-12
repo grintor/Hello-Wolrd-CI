@@ -1,4 +1,4 @@
-name: run tests
+name: Code Cleanup and Testing
 
 on:
     push:
@@ -7,7 +7,7 @@ on:
         branches: ["main"]
 
 jobs:
-    build:
+    cleanup and tests:
         runs-on: ubuntu-latest
 
         steps:
@@ -27,18 +27,18 @@ jobs:
                   pre-commit run --all-files
               continue-on-error: true
 
-            - name: Test with pre-commit
+            - name: test with pre-commit
               run: |
                   pre-commit run --all-files
 
-            - name: Test with pytest
+            - name: test with pytest
               run: |
                   pytest
 
-            - name: Commit report
+            - name: commit report
               run: |
                   git config --global user.name 'CI Tests'
                   git config --global user.email 'grintor@users.noreply.github.com'
-                  git commit -am "Automated CI report update"
+                  git commit -am "Automated CI update"
                   git push
               continue-on-error: true
