@@ -5,12 +5,12 @@ repos:
     hooks:
         - id: end-of-file-fixer
         - id: trailing-whitespace
-        - id: pretty-format-json
-          args: [--autofix, --indent=4, --no-sort-keys, --no-ensure-ascii]
         - id: fix-byte-order-marker
         - id: mixed-line-ending
           args: [--fix=lf]
           exclude: "requirements.txt" # todo: https://github.com/jazzband/pip-tools/issues/1448
+        - id: pretty-format-json
+          args: [--autofix, --indent=4, --no-sort-keys, --no-ensure-ascii]
 
 
   - repo: https://github.com/psf/black
@@ -47,10 +47,9 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.2.0
     hooks:
+        - id: check-json
         - id: check-yaml
           fail_fast: true # applies to check-yaml as well as every hook below
-        - id: check-json
-        - id: check-xml
         - id: name-tests-test
 
   - repo: https://github.com/PyCQA/flake8

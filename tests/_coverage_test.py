@@ -43,7 +43,7 @@ def main():
             json.dumps(
                 {
                     "schemaVersion": 1,
-                    "label": "coverage",
+                    "label": "Test Coverage",
                     "message": f"{percent_covered}%",
                     "color": covered_color,
                 }
