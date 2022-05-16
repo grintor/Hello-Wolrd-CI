@@ -23,6 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MERGE_LABELS: ""
+      UPDATE_LABELS: ""
       MERGE_METHOD: "squash"
     steps:
       - id: automerge
