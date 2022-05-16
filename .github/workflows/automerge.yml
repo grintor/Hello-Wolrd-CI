@@ -17,9 +17,13 @@ on:
     types:
       - completed
   status: {}
+
 jobs:
   automerge:
     runs-on: ubuntu-latest
+    env:
+      MERGE_LABELS: ""
+      MERGE_METHOD: "squash"
     steps:
       - id: automerge
         name: automerge
