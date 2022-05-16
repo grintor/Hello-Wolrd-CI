@@ -1,8 +1,18 @@
 # Hello-Wolrd-CI
 
-A test of GitHub Actions with pylint and coverage.py and various other tools
+A template for GitHub Actions with pylint, pre-commit, and coverage.py and various other tools
 
-Just run "pytest" in the repo root and look in results or push to github to have the tags updated automatically.
+1) clone the repo
+2) pip -r requirements.txt
+3) pre-commit install
+4) git checkout staging
+
+
+
+To test, just run "pytest" in the repo root and look in results
+The test coverage reports are located in .repo-reports/coverage/index.html after the tests are ran
+CI will fail if the coverage is not above 90% and if the code quality is not above 90%
+
 
 [![build status](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/test.yml/badge.svg)](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/test.yml)
 [![code coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/covered_shield.json)](https://github.com/grintor/Hello-Wolrd-CI/blob/main/.repo-reports/coverage.txt)
