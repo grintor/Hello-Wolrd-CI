@@ -18,4 +18,4 @@ CI will fail if the coverage is not above 90% and if the code quality is not abo
 [![CodeQL](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yml/badge.svg)](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yml)
 
 [![code coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/covered_shield.json)](.repo-reports/coverage.txt)
-[![code quality](https://img.shields.io/endpoint?url=.repo-shields/quality_shield.json?raw=1)](.repo-reports/pylint-problems.txt)
+[![code quality](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/quality_shield.json)](.repo-reports/pylint-problems.txt)
