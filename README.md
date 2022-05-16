@@ -15,7 +15,6 @@ CI will fail if the coverage is not above 90% and if the code quality is not abo
 
 
 [![code testing](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/testing.yml/badge.svg)](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/testing.yml)
-
 [![CodeQL](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yml/badge.svg)](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yml)
 
 [![code coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/covered_shield.json)](https://github.com/grintor/Hello-Wolrd-CI/blob/main/.repo-reports/coverage.txt)
