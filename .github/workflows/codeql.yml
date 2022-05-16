@@ -12,13 +12,10 @@
 name: "CodeQL"
 
 on:
-  push:
-    branches-ignore: [main]
   pull_request:
-    # The branches below must be a subset of the branches above
     branches: [main]
   schedule:
-    - cron: "45 23 * * 5"
+    - cron: "45 23 * * 5" # Last commit on default branch
 
 jobs:
   analyze:

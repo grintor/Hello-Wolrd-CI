@@ -22,8 +22,9 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     env:
-      MERGE_LABELS: ""
       UPDATE_LABELS: ""
+      UPDATE_METHOD: "merge"
+      MERGE_LABELS: ""
       MERGE_METHOD: "squash"
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     steps:
