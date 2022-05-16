@@ -19,20 +19,11 @@ on:
   status: {}
 
 jobs:
-  labeler:
-    if: ${{ github.actor == 'grintor' }}
-    permissions:
-      contents: read
-      pull-requests: write
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/labeler@v4
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-
   automerge:
-    needs: labeler
     runs-on: ubuntu-latest
+    env:
+      MERGE_LABELS: ""
+      MERGE_METHOD: "squash"
     steps:
       - id: automerge
         name: automerge
