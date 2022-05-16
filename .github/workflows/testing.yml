@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: "Event name is: ${{ github.event_name }}"
         run: echo "Event name is:" ${{ github.event_name }}
 
