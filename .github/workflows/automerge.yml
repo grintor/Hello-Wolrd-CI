@@ -17,8 +17,21 @@ on:
     types:
       - completed
   status: {}
+
 jobs:
+  labeler:
+    if: ${{ github.actor == 'grintor' }}
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v4
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+
   automerge:
+    needs: labeler
     runs-on: ubuntu-latest
     steps:
       - id: automerge

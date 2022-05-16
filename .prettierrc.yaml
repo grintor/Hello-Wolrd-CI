@@ -3,3 +3,10 @@ tabWidth: 4
 printWidth: 88
 semi: true
 singleQuote: false
+
+overrides:
+  - files:
+      - "*.yml"
+      - "*.yaml"
+    options:
+      tabWidth: 2
