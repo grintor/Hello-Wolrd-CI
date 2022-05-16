@@ -36,7 +36,7 @@ def main():
     if percent_covered > 95:
         covered_color = "yellow"
     if percent_covered > 98:
-        covered_color = "green"
+        covered_color = "#34D058"
 
     with open(".repo-shields/covered_shield.json", "w", encoding="utf-8") as f:
         f.write(

@@ -64,7 +64,6 @@ disable =	locally-disabled,
 			too-many-arguments,
 			trailing-whitespace,
 			singleton-comparison,
-			too-many-branches,
 			too-many-return-statements,
 			consider-using-in,
 			missing-module-docstring,
@@ -80,9 +79,6 @@ disable =	locally-disabled,
 			logging-fstring-interpolation,
 			logging-not-lazy,
 			broad-except,
-			too-many-locals,
-			multiple-imports,
-			too-many-statements,
 			subprocess-run-check,
 			unsubscriptable-object, # this would be good if not for false positives. Hopefully uncomment in future versions
 			unsupported-membership-test, # this would be good if not for false positives. Hopefully uncomment in future versions
@@ -360,16 +356,16 @@ max-args=5
 ignored-argument-names=_.*
 
 # Maximum number of locals for function / method body
-max-locals=15
+max-locals=30
 
 # Maximum number of return / yield for function / method body
 max-returns=6
 
 # Maximum number of branch for function / method body
-max-branches=12
+max-branches=20
 
 # Maximum number of statements in function / method body
-max-statements=100
+max-statements=50
 
 # Maximum number of parents for a class (see R0901).
 max-parents=7

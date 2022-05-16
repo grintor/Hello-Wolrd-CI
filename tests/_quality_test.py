@@ -37,7 +37,7 @@ def main():
     if average_score > 9:
         score_color = "yellow"
     if average_score > 9.5:
-        score_color = "green"
+        score_color = "#34D058"
 
     with open(".repo-shields/quality_shield.json", "w", encoding="utf-8") as f:
         f.write(
