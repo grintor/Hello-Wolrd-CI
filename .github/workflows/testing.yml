@@ -3,8 +3,6 @@ name: Code Testing
 on:
   push:
     branches-ignore: ["main"]
-  pull_request:
-    branches: ["main"]
 
 jobs:
   cleanup_and_tests:
