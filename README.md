@@ -14,8 +14,8 @@ The test coverage reports are located in .repo-reports/coverage/index.html after
 CI will fail if the coverage is not above 90% and if the code quality is not above 90%
 
 
-[![code testing](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/testing.yml/badge.svg)](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/testing.yml)
+[![code testing](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/testing.yml/badge.svg)](https://github.com/grintor/Hello-World-CI/actions/workflows/testing.yml)
 [![CodeQL](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yml/badge.svg)](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yml)
 
-[![code coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/covered_shield.json)](https://github.com/grintor/Hello-Wolrd-CI/blob/main/.repo-reports/coverage.txt)
-[![code quality](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/quality_shield.json)](https://github.com/grintor/Hello-Wolrd-CI/blob/main/.repo-reports/pylint-problems.txt)
+[![code coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/covered_shield.json)](.repo-reports/coverage.txt)
+[![code quality](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/quality_shield.json)](.repo-reports/pylint-problems.txt)
