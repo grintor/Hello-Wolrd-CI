@@ -1,10 +1,10 @@
-name: Code Cleanup and Testing
+name: Code Testing
 
 on:
     push:
-        branches: ["main"]
+        branches: ["staging", "main"]
     pull_request:
-        branches: ["main"]
+        branches: ["staging", "main"]
 
 jobs:
     cleanup_and_tests:
