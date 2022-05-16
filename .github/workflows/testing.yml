@@ -3,12 +3,17 @@ name: Code Testing
 on:
   push:
     branches-ignore: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
   cleanup_and_tests:
     runs-on: ubuntu-latest
 
     steps:
+      - run: echo "event name is:" ${{ github.event_name }}
+      - run: echo "event type is:" ${{ github.event.action }}
+
       - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2

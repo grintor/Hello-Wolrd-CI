@@ -27,6 +27,9 @@ jobs:
       MERGE_METHOD: "squash"
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     steps:
+      - run: echo "event name is:" ${{ github.event_name }}
+      - run: echo "event type is:" ${{ github.event.action }}
+
       - id: automerge
         name: automerge
         uses: "pascalgn/automerge-action@v0.15.3"
