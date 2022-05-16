@@ -44,7 +44,7 @@ def main():
             json.dumps(
                 {
                     "schemaVersion": 1,
-                    "label": "code quality",
+                    "label": "Code Quality",
                     "message": f"{average_score}/10",
                     "color": score_color,
                 }
