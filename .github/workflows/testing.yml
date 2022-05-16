@@ -2,9 +2,9 @@ name: Code Testing
 
 on:
     push:
-        branches: ["staging", "main"]
+        branches-ignore: ["main"]
     pull_request:
-        branches: ["staging", "main"]
+        branches: ["main"]
 
 jobs:
     cleanup_and_tests:
