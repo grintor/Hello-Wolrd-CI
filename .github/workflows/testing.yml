@@ -9,13 +9,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: "Event name is: ${{ github.event_name }}"
-        run: echo "Event name is:" ${{ github.event_name }}
+      - name: "print context"
+        run: |
+          echo ${{ github.event_name }}
+          echo ${{ github.event.action }}
+          echo ${{ github.actor }}
 
-      - name: "Event type is: ${{ github.event.action }}"
-        run: echo "Event type is:" ${{ github.event.action }}
-
-      - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -40,6 +39,7 @@ jobs:
           pre-commit run --all-files
 
       - name: commit report
+        uses: actions/checkout@v2
         run: |
           git config --global user.name 'CI Tests'
           git config --global user.email 'grintor@users.noreply.github.com'
