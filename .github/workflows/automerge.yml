@@ -20,7 +20,8 @@ on:
 
 jobs:
   automerge:
-    if: contains(toJSON('["${{github.repository_owner}}", "dependabot"]'), github.actor) # append additional users allowed to automerge here.
+    # append additional users allowed to automerge below
+    if: contains(toJSON('["${{github.repository_owner}}", "dependabot"]'), github.actor)
     runs-on: ubuntu-latest
     env:
       UPDATE_LABELS: ""
