@@ -39,6 +39,7 @@ jobs:
           echo "github.event.action:" ${{github.event.action}}
           echo "github.actor:" ${{github.actor}}
           echo "github.repository_owner:" ${{github.repository_owner}}
+          echo "$$" contains(toJSON('["${{github.repository_owner}}", "dependabot"]'), github.actor)
 
       - id: automerge
         name: automerge
