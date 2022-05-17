@@ -18,12 +18,9 @@ on:
       - completed
   status: {}
 
-env:
-  approved_autopullers: '["${{github.repository_owner}}", "octocat"]' # add more users to the array to allow them to auto-merge
-
 jobs:
   automerge:
-    if: contains(fromJSON(env.approved_autopullers), github.actor)
+    if: ${{ contains(fromJson('["grintor", "synchronize"]'), github.actor) }}
     runs-on: ubuntu-latest
     env:
       UPDATE_LABELS: ""
@@ -31,6 +28,7 @@ jobs:
       MERGE_LABELS: ""
       MERGE_METHOD: "squash"
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      APPROVED_AUTOMERGERS: '["${{github.repository_owner}}", "octocat"]' # add more users to the array to allow them to auto-merge
     steps:
       - name: "print context"
         run: |
