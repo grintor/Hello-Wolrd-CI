@@ -19,11 +19,11 @@ on:
   status: {}
 
 env:
-  approved_autopullers: '["${{github.repository_owner}}", "octocat"]' # add more users to the array to allow them to auto-merge
+  approved_automergers: '["${{github.repository_owner}}", "octocat"]' # add more users to the array to allow them to auto-merge
 
 jobs:
   automerge:
-    if: contains(fromJSON(env.approved_autopullers), github.actor)
+    if: contains(fromJSON(env.approved_automergers), github.actor)
     runs-on: ubuntu-latest
     env:
       UPDATE_LABELS: ""
