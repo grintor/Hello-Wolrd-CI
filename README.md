@@ -1,6 +1,6 @@
 # Hello-Wolrd-CI
 
-A template for GitHub Actions with pylint, pre-commit, and coverage.py and various other tools
+A template for GitHub Actions with pylint, pre-commit, and coverage.py and various other tools.
 
 1) clone the repo
 2) pip -r requirements.txt
