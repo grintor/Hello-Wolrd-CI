@@ -17,8 +17,9 @@ on:
     types:
       - completed
   status: {}
-  env:
-    approved_autopullers: ["${{github.repository_owner}}", "octocat"] # add more users to the array to allow them to auto-merge
+
+env:
+  approved_autopullers: ["${{github.repository_owner}}", "octocat"] # add more users to the array to allow them to auto-merge
 
 jobs:
   if: contains(fromJson(env.approved_autopullers), github.actor)
