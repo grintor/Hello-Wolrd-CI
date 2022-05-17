@@ -14,6 +14,8 @@ jobs:
           echo ${{ github.event_name }}
           echo ${{ github.event.action }}
           echo ${{ github.actor }}
+          
+      - uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -38,7 +40,6 @@ jobs:
         run: |
           pre-commit run --all-files
 
-      - uses: actions/checkout@v2
       - name: commit report
         run: |
           git config --global user.name 'CI Tests'
