@@ -1,7 +1,5 @@
 name: automerge
 on:
-  push:
-    branches-ignore: ["main"]
   pull_request:
     types:
       - labeled
@@ -22,7 +20,7 @@ on:
 
 jobs:
   automerge:
-    if: contains('["${{github.repository_owner}}", "octocat"]'), github.actor) # append users allowed to automerge here.
+    if: contains('["${{github.repository_owner}}", "octocat"]'), github.actor) # append additional users allowed to automerge here.
     runs-on: ubuntu-latest
     env:
       UPDATE_LABELS: ""
