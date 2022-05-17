@@ -22,18 +22,17 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     env:
-      MERGE_LABELS: ""
       UPDATE_LABELS: ""
+      UPDATE_METHOD: "merge"
+      MERGE_LABELS: ""
       MERGE_METHOD: "squash"
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     steps:
-
       - name: "Event name is: ${{ github.event_name }}"
         run: echo "Event name is:" ${{ github.event_name }}
 
       - name: "Event type is: ${{ github.event.action }}"
         run: echo "Event type is:" ${{ github.event.action }}
-
 
       - id: automerge
         name: automerge

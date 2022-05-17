@@ -1,11 +1,11 @@
 name: Code Testing
 
 on:
-  push:
-    branches-ignore: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
-  cleanup_and_tests:
+  tests_pull:
     runs-on: ubuntu-latest
 
     steps:
@@ -38,11 +38,3 @@ jobs:
       - name: test with pre-commit
         run: |
           pre-commit run --all-files
-
-      - name: commit report
-        run: |
-          git config --global user.name 'CI Tests'
-          git config --global user.email 'grintor@users.noreply.github.com'
-          git commit -am "Automated CI update"
-          git push
-        continue-on-error: true

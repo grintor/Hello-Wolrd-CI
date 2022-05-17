@@ -12,13 +12,10 @@
 name: "CodeQL"
 
 on:
-  push:
-    branches-ignore: [main]
   pull_request:
-    # The branches below must be a subset of the branches above
     branches: [main]
   schedule:
-    - cron: "45 23 * * 5"
+    - cron: "45 23 * * 5" # Last commit on default branch
 
 jobs:
   analyze:
@@ -37,13 +34,11 @@ jobs:
         # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
 
     steps:
-
       - name: "Event name is: ${{ github.event_name }}"
         run: echo "Event name is:" ${{ github.event_name }}
 
       - name: "Event type is: ${{ github.event.action }}"
         run: echo "Event type is:" ${{ github.event.action }}
-
 
       - name: Checkout repository
         uses: actions/checkout@v3
