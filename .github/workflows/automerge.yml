@@ -22,7 +22,7 @@ on:
 
 jobs:
   automerge:
-    if: contains([github.repository_owner, "synchronize"]), github.actor)
+    if: contains('["${{github.repository_owner}}", "octocat"]'), github.actor) # append users allowed to automerge here.
     runs-on: ubuntu-latest
     env:
       UPDATE_LABELS: ""
