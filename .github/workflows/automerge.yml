@@ -20,7 +20,7 @@ on:
 
 jobs:
   automerge:
-    if: contains('["${{github.repository_owner}}", "octocat"]'), github.actor) # append additional users allowed to automerge here.
+    if: contains('["${{github.repository_owner}}", "dependabot"]'), github.actor) # append additional users allowed to automerge here.
     runs-on: ubuntu-latest
     env:
       UPDATE_LABELS: ""
@@ -31,9 +31,9 @@ jobs:
     steps:
       - name: "print context info"
         run: |
-          echo "github.event_name: " ${{github.event_name}}
-          echo "github.event.action: " ${{github.event.action}}
-          echo "github.actor: " ${{github.actor}}
+          echo "github.event_name:" ${{github.event_name}}
+          echo "github.event.action:" ${{github.event.action}}
+          echo "github.actor:" ${{github.actor}}
 
       - id: automerge
         name: automerge

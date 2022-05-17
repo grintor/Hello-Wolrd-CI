@@ -11,9 +11,9 @@ jobs:
     steps:
       - name: "print context info"
         run: |
-          echo "github.event_name: " ${{github.event_name}}
-          echo "github.event.action: " ${{github.event.action}}
-          echo "github.actor: " ${{github.actor}}
+          echo "github.event_name:" ${{github.event_name}}
+          echo "github.event.action:" ${{github.event.action}}
+          echo "github.actor:" ${{github.actor}}
 
       - uses: actions/checkout@v2
 
@@ -42,8 +42,8 @@ jobs:
 
       - name: commit report
         run: |
-          git config --global user.name 'CI Tests'
-          git config --global user.email 'grintor@users.noreply.github.com'
-          git commit -am "Automated CI update"
+          git config --global user.name '🤖 CI Tests'
+          git config --global user.email 'ghost@users.noreply.github.com'
+          git commit -am "🤖 Automated CI update"
           git push
         continue-on-error: true
