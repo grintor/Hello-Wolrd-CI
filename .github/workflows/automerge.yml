@@ -31,6 +31,7 @@ jobs:
       MERGE_LABELS: ""
       MERGE_METHOD: "squash"
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      TESTTTT: contains(toJSON('["${{github.repository_owner}}", "dependabot"]'), github.actor)
     steps:
       - name: "print context info"
         run: |
@@ -38,7 +39,7 @@ jobs:
           echo "github.event.action:" ${{github.event.action}}
           echo "github.actor:" ${{github.actor}}
           echo "github.repository_owner:" ${{github.repository_owner}}
-          echo "$$" contains(toJSON('["${{github.repository_owner}}", "dependabot"]'), github.actor)
+          echo "xx" $TESTTTT
 
       - id: automerge
         name: automerge
