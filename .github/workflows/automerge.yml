@@ -20,10 +20,12 @@ on:
 
 jobs:
   automerge:
-    # append additional users allowed to automerge below
-    if: |
-      github.actor == github.repository_owner ||
-      github.actor == "dependabot"
+    if: >-
+      ${{
+        # append additional users allowed to automerge below
+        github.actor == github.repository_owner ||
+        github.actor == "dependabot"
+      }}
     runs-on: ubuntu-latest
     env:
       UPDATE_LABELS: ""
