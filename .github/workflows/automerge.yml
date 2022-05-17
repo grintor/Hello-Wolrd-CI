@@ -20,9 +20,9 @@ on:
 
 jobs:
   automerge:
+    # append additional users allowed to automerge below
     if: >-
       ${{
-        # append additional users allowed to automerge below
         github.actor == github.repository_owner ||
         github.actor == "dependabot"
       }}
