@@ -23,7 +23,7 @@ env:
 
 jobs:
   automerge:
-    if: contains(fromJSON(env.approved_automergers), github.actor)
+    if: contains(fromJSON($approved_automergers), github.actor)
     runs-on: ubuntu-latest
     env:
       UPDATE_LABELS: ""
