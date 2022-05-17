@@ -38,8 +38,8 @@ jobs:
         run: |
           pre-commit run --all-files
 
+      - uses: actions/checkout@v2
       - name: commit report
-        uses: actions/checkout@v2
         run: |
           git config --global user.name 'CI Tests'
           git config --global user.email 'grintor@users.noreply.github.com'
