@@ -20,7 +20,7 @@ on:
 
 jobs:
   automerge:
-    if: ${{ contains([github.repository_owner, "octocat"], github.actor) }}
+    if: ${{ contains(fromJson('["grintor", "synchronize"]'), github.actor) }}
     runs-on: ubuntu-latest
     env:
       UPDATE_LABELS: ""
