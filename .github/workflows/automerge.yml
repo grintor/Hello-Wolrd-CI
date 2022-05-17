@@ -20,7 +20,7 @@ on:
 
 jobs:
   automerge:
-    if: contains(fromJSON(env.APPROVED_AUTOMERGERS), github.actor)
+    if: ${{ contains(fromJSON([github.repository_owner, "octocat"]), github.actor) }}
     runs-on: ubuntu-latest
     env:
       UPDATE_LABELS: ""
