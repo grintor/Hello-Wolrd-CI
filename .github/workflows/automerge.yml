@@ -20,6 +20,7 @@ on:
 
 jobs:
   automerge:
+    if: contains('["${{github.repository_owner}}", "octocat"]'), github.actor) # append additional users allowed to automerge here.
     runs-on: ubuntu-latest
     env:
       UPDATE_LABELS: ""
@@ -28,11 +29,11 @@ jobs:
       MERGE_METHOD: "squash"
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     steps:
-      - name: "Event name is: ${{ github.event_name }}"
-        run: echo "Event name is:" ${{ github.event_name }}
-
-      - name: "Event type is: ${{ github.event.action }}"
-        run: echo "Event type is:" ${{ github.event.action }}
+      - name: "print context info"
+        run: |
+          echo "github.event_name: " ${{github.event_name}}
+          echo "github.event.action: " ${{github.event.action}}
+          echo "github.actor: " ${{github.actor}}
 
       - id: automerge
         name: automerge
