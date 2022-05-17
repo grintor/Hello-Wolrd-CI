@@ -24,7 +24,7 @@ jobs:
     if: >-
       ${{
         github.actor == github.repository_owner ||
-        github.actor == "dependabot"
+        github.actor == 'dependabot'
       }}
     runs-on: ubuntu-latest
     env:
