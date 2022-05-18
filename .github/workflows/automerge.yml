@@ -10,12 +10,10 @@ jobs:
       USER_ALLOWLIST: |
         '[
           "${{github.repository_owner}}",
-          "dependabot",
-          "snyk-bot",
-          "grintor2"
+          "dependabot"
         ]'
     steps:
-      - name: "Context Info"
+      - name: "Print Context Info"
         run: |
           echo "github.event_name:" ${{github.event_name}}
           echo "github.event.action:" ${{github.event.action}}
