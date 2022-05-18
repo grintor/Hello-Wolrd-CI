@@ -16,23 +16,10 @@ jobs:
       MERGE_LABELS: ""
       MERGE_METHOD: "squash"
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-    steps:
-      - name: Sender
-        run: echo ${{github.event.pull_request.user.login}}
-      - name: Dump GitHub context
-        id: github_context_step
-        run: echo '${{ toJSON(github) }}'
-      - name: Dump job context
-        run: echo '${{ toJSON(job) }}'
-      - name: Dump steps context
-        run: echo '${{ toJSON(steps) }}'
-      - name: Dump runner context
-        run: echo '${{ toJSON(runner) }}'
-      - name: Dump strategy context
-        run: echo '${{ toJSON(strategy) }}'
-      - name: Dump matrix context
-        run: echo '${{ toJSON(matrix) }}'
+      # append additional users here to allow automerge for them
+      USER_ALLOWLIST: '["${{github.repository_owner}}", "dependabot"]'
 
+    steps:
       - name: "Context Info"
         run: |
           echo "github.event_name:" ${{github.event_name}}
@@ -42,11 +29,11 @@ jobs:
           echo "github.event.pull_request.user.login:" ${{github.event.pull_request.user.login}}
 
       - name: automerge
-        # append additional users allowed to automerge below
+        # Only automerge if both the actor and the pull request user are in the USER_ALLOWLIST
         if: >-
           ${{
-            (github.actor == github.repository_owner && github.event.pull_request.user.login == github.repository_owner) ||
-            (github.actor == 'dependabot' && github.event.pull_request.user.login == 'dependabot')
+            contains(fromJSON(env.USER_ALLOWLIST), github.actor) &&
+            contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)
           }}
         id: automerge
         uses: "pascalgn/automerge-action@v0.15.3"
