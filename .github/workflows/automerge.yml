@@ -26,7 +26,7 @@ jobs:
           echo "actor approved": ${{contains(fromJSON(env.USER_ALLOWLIST), github.actor)}}
           echo "pull_request.user.login approved": ${{contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)}}
           echo "bad_guy approved": ${{contains(fromJSON(env.USER_ALLOWLIST), 'bad_guy')}}
-          echo "both approved": |
+          echo "both approved": >-
             ${{
               contains(fromJSON(env.USER_ALLOWLIST), github.actor) &&
               contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)
@@ -34,7 +34,7 @@ jobs:
           
 
       - name: automerge
-        if: |
+        if: >-
           ${{
             contains(fromJSON(env.USER_ALLOWLIST), github.actor) &&
             contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)
