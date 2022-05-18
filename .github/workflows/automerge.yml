@@ -1,42 +1,45 @@
 name: automerge
 on:
+  pull_request_target:
   pull_request:
-    types:
-      - labeled
-      - unlabeled
-      - synchronize
-      - opened
-      - edited
-      - ready_for_review
-      - reopened
-      - unlocked
-  pull_request_review:
-    types:
-      - submitted
-  check_suite:
-    types:
-      - completed
-  status: {}
 
 jobs:
   automerge:
-    # append additional users allowed to automerge below
-    if: contains(toJSON('["${{github.repository_owner}}", "dependabot"]'), github.actor)
     runs-on: ubuntu-latest
     env:
+
+      # append additional users to the USER_ALLOWLIST to allow automerge for them
+      USER_ALLOWLIST: '["${{github.repository_owner}}", "dependabot", "grintor2"]'
+
+      # MERGE_RETRIES is number of minutes x10, so 100 is 10 minutes.
+      # This number needs to be higer than the time it takes for all required tests to complete
+      # Increase this number if the tests might take longer
+      MERGE_RETRIES: 100
+
       UPDATE_LABELS: ""
       UPDATE_METHOD: "merge"
       MERGE_LABELS: ""
       MERGE_METHOD: "squash"
+      MERGE_FORKS: true
+      MERGE_ERROR_FAIL: true
+      MERGE_RETRY_SLEEP: 6000
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
     steps:
-      - name: "print context info"
+      - name: "Context Info"
         run: |
           echo "github.event_name:" ${{github.event_name}}
           echo "github.event.action:" ${{github.event.action}}
           echo "github.actor:" ${{github.actor}}
           echo "github.repository_owner:" ${{github.repository_owner}}
+          echo "github.event.pull_request.user.login:" ${{github.event.pull_request.user.login}}
 
-      - id: automerge
-        name: automerge
+      - name: automerge
+        # Only automerge if both the actor and the pull request user are in the USER_ALLOWLIST
+        if: |
+          ${{
+            contains(fromJSON(env.USER_ALLOWLIST), github.actor) &&
+            contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)
+          }}
+        id: automerge
         uses: "pascalgn/automerge-action@v0.15.3"
