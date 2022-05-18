@@ -24,7 +24,7 @@ jobs:
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
     steps:
       - name: Sender
-        run: echo ${{github.event.pull_request.sender.login}}
+        run: echo ${{github.event.pull_request.user.login}}
       - name: Dump GitHub context
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
