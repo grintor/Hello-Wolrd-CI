@@ -1,4 +1,12 @@
 fail_fast: false # fixers should be false, linters should be true
+exclude: |
+  (?x)^(
+      docs/ |
+      another/example/directory/to_exclude/
+  )|(?x)^(
+      example/file/to_exclude.py |
+      another/example/file/to_exclude.py
+  )$
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.2.0

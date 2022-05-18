@@ -21,8 +21,9 @@ def main():
     subprocess.run(["coverage", "html", "-d", ".repo-reports/coverage"])
 
     report_process = subprocess.run(["coverage", "report"], capture_output=True)
-    with open(".repo-reports/coverage.txt", "wb") as f:
-        f.write(report_process.stdout)
+    with open(".repo-reports/coverage.txt", "w", encoding="utf-8", newline="\n") as f:
+        for line in report_process.stdout.decode("utf-8").splitlines():
+            f.write(f"{line}\n")
     subprocess.run(["coverage", "erase"])
 
     with open(".repo-reports/coverage.json", "r", encoding="utf-8") as f:
@@ -38,7 +39,8 @@ def main():
     if percent_covered > 98:
         covered_color = "#34D058"
 
-    with open(".repo-shields/covered_shield.json", "w", encoding="utf-8") as f:
+    shield_path = ".repo-shields/covered_shield.json"
+    with open(shield_path, "w", encoding="utf-8", newline="\n") as f:
         f.write(
             json.dumps(
                 {
@@ -46,9 +48,11 @@ def main():
                     "label": "Test Coverage",
                     "message": f"{percent_covered}%",
                     "color": covered_color,
-                }
+                },
+                indent=4,
             )
         )
+        f.write("\n")
 
     return percent_covered
 

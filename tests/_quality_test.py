@@ -26,9 +26,8 @@ def main():
                 score = results.linter.stats.global_note
                 scores.append(score)
                 if score < 10:
-                    with open(
-                        ".repo-reports/pylint-problems.txt", "a", encoding="utf-8"
-                    ) as f:
+                    problems_path = ".repo-reports/pylint-problems.txt"
+                    with open(problems_path, "a", encoding="utf-8", newline="\n") as f:
                         f.write(report)
 
     average_score = round(sum(scores) / len(scores), 1)
@@ -39,7 +38,8 @@ def main():
     if average_score > 9.5:
         score_color = "#34D058"
 
-    with open(".repo-shields/quality_shield.json", "w", encoding="utf-8") as f:
+    shield_path = ".repo-shields/quality_shield.json"
+    with open(shield_path, "w", encoding="utf-8", newline="\n") as f:
         f.write(
             json.dumps(
                 {
@@ -47,9 +47,11 @@ def main():
                     "label": "Code Quality",
                     "message": f"{average_score}/10",
                     "color": score_color,
-                }
+                },
+                indent=4,
             )
         )
+        f.write("\n")
 
     return average_score
 
