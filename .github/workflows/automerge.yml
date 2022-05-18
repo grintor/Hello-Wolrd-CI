@@ -9,12 +9,6 @@ on:
 
 jobs:
   automerge:
-    # append additional users allowed to automerge below
-    #if: >-
-    #  ${{
-    #    github.actor == github.repository_owner ||
-    #    github.actor == 'dependabot'
-    #  }}
     runs-on: ubuntu-latest
     env:
       UPDATE_LABELS: ""
@@ -39,13 +33,20 @@ jobs:
       - name: Dump matrix context
         run: echo '${{ toJSON(matrix) }}'
 
-      - name: "print context info"
+      - name: "Context Info"
         run: |
           echo "github.event_name:" ${{github.event_name}}
           echo "github.event.action:" ${{github.event.action}}
           echo "github.actor:" ${{github.actor}}
           echo "github.repository_owner:" ${{github.repository_owner}}
+          echo "github.event.pull_request.user.login:" ${{github.event.pull_request.user.login}}
 
-      - id: automerge
-        name: automerge
+      - name: automerge
+        # append additional users allowed to automerge below
+        if: >-
+          ${{
+            (github.actor == github.repository_owner && github.event.pull_request.user.login == github.repository_owner) ||
+            (github.actor == 'dependabot' && github.event.pull_request.user.login == 'dependabot')
+          }}
+        id: automerge
         uses: "pascalgn/automerge-action@v0.15.3"
