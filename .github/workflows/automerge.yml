@@ -46,4 +46,9 @@ jobs:
             contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)
           }}
         id: automerge
-        uses: "pascalgn/automerge-action@v0.15.3"
+        #uses: "pascalgn/automerge-action@v0.15.3"
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          pull-request-number: github.event.pull_request.number
+          merge-method: squash
