@@ -17,7 +17,7 @@ jobs:
       MERGE_METHOD: "squash"
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       # append additional users here to allow automerge for them
-      USER_ALLOWLIST: '["${{github.repository_owner}}", "dependabot"]'
+      USER_ALLOWLIST: '["${{github.repository_owner}}", "dependabot", "grintor2"]'
 
     steps:
       - name: "Context Info"
