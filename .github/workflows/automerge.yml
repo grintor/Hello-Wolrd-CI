@@ -21,6 +21,7 @@ jobs:
           echo "github.repository_owner:" ${{github.repository_owner}}
           echo "github.event.pull_request.user.login:" ${{github.event.pull_request.user.login}}
           echo "github.event.pull_request.number:" ${{github.event.pull_request.number}}
+          echo "json test:" ${{ toJSON(fromJSON(env.USER_ALLOWLIST)) }}
 
       - name: automerge
         if: |
