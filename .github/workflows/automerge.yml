@@ -6,10 +6,14 @@ on:
 jobs:
   automerge:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
     env:
 
       # append additional users to the USER_ALLOWLIST to allow automerge for them
-      USER_ALLOWLIST: '["${{github.repository_owner}}", "dependabot", "grintor2"]'
+      USER_ALLOWLIST: '["${{github.repository_owner}}", "dependabot", "snyk-bot", "grintor2"]'
 
       # MERGE_RETRIES is number of minutes x10, so 100 is 10 minutes.
       # This number needs to be higer than the time it takes for all required tests to complete
@@ -42,4 +46,9 @@ jobs:
             contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)
           }}
         id: automerge
-        uses: "pascalgn/automerge-action@v0.15.3"
+        #uses: "pascalgn/automerge-action@v0.15.3"
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          pull-request-number: ${{github.event.pull_request.number}}
+          merge-method: squash
