@@ -1,6 +1,7 @@
 name: automerge
 on:
   pull_request_target:
+  pull_request:
 
 jobs:
   automerge:
@@ -21,9 +22,13 @@ jobs:
           echo "github.repository_owner:" ${{github.repository_owner}}
           echo "github.event.pull_request.user.login:" ${{github.event.pull_request.user.login}}
           echo "github.event.pull_request.number:" ${{github.event.pull_request.number}}
+          echo "allow list:" ${{ env.USER_ALLOWLIST }}
+          echo "actor approved": ${{contains(fromJSON(env.USER_ALLOWLIST), github.actor)}}
+          echo "pull_request.user.login approved": ${{contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)}}
+          
 
       - name: automerge
-        if: |
+        if: >-
           ${{
             contains(fromJSON(env.USER_ALLOWLIST), github.actor) &&
             contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)
