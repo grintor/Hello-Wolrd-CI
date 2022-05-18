@@ -2,11 +2,6 @@ name: automerge
 on:
   pull_request_target:
   pull_request:
-    types:
-      - synchronize
-      - opened
-      - edited
-      - reopened
 
 jobs:
   automerge:
@@ -41,7 +36,7 @@ jobs:
 
       - name: automerge
         # Only automerge if both the actor and the pull request user are in the USER_ALLOWLIST
-        if: >-
+        if: |
           ${{
             contains(fromJSON(env.USER_ALLOWLIST), github.actor) &&
             contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)
