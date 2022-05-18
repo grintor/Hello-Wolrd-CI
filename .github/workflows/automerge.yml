@@ -27,7 +27,7 @@ jobs:
       MERGE_METHOD: "squash"
       MERGE_FORKS: true
       MERGE_ERROR_FAIL: true
-      MERGE_RETRY_SLEEP: 6
+      MERGE_RETRY_SLEEP: 6000
       GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
     steps:
