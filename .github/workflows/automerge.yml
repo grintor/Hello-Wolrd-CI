@@ -9,7 +9,7 @@ jobs:
     env:
 
       # append additional users to the USER_ALLOWLIST to allow automerge for them
-      USER_ALLOWLIST: '["${{github.repository_owner}}", "dependabot", "grintor2"]'
+      USER_ALLOWLIST: '["${{github.repository_owner}}", "dependabot", "snyk-bot"]'
 
       # MERGE_RETRIES is number of minutes x10, so 100 is 10 minutes.
       # This number needs to be higer than the time it takes for all required tests to complete
