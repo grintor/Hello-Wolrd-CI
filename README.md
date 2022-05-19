@@ -22,3 +22,4 @@ CI will fail if the coverage is not above 90% and if the code quality is not abo
 
 
 
+
