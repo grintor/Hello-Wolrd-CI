@@ -1,12 +1,12 @@
 name: "CodeQL"
 
 on:
-  pull_request:
-    types:
-      - synchronize
-      - opened
-      - reopened
-    branches: [main]
+  #pull_request:
+  #  types:
+  #    - synchronize
+  #    - opened
+  #    - reopened
+  #  branches: [main]
 
   repository_dispatch:
     types: [my-event]
