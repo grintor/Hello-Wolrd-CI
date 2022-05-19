@@ -8,12 +8,13 @@ jobs:
   pull_check_again:
     runs-on: ubuntu-latest
     steps:
-      - name: Wait for tests to succeed
-        uses: lewagon/wait-on-check-action@v1.0.0
+      - name: Wait for build
+        uses: lewagon/wait-on-check-action@1b1630e169116b58a4b933d5ad7effc46d3d312d
         with:
-          ref: "refs/pull/${{github.event.number}}/merge"
-          check-name: "Code Testing"
+          ref: ${{ github.event.pull_request.head.sha }}
+          check-name: "Build operator images (PR)"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 60
 
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v2
