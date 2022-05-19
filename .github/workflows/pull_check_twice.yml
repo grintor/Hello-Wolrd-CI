@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Wait for build
-        uses: lewagon/wait-on-check-action@1b1630e169116b58a4b933d5ad7effc46d3d312d
+        uses: lewagon/wait-on-check-action@v1.1.1
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          check-name: "Build operator images (PR)"
+          check-name: "Code Tests"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 60
+          wait-interval: 10
 
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v2
