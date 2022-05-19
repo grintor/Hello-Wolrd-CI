@@ -44,10 +44,12 @@ jobs:
         run: |
           python .repo-tools/build_docs.py
 
-      - name: commit report
+      - name: commit changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm -r --cached .
+          git add .
           git commit -am "🤖 Automated CI update [skip actions]"
           git push
         continue-on-error: true
