@@ -19,3 +19,6 @@ A template for GitHub Actions with pylint, pre-commit, and coverage.py and vario
 To test, just run "pytest" in the repo root and look in results
 The test coverage reports are located in .repo-reports/coverage/index.html after the tests are ran
 CI will fail if the coverage is not above 90% and if the code quality is not above 90%
+
+
+
