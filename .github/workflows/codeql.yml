@@ -2,6 +2,10 @@ name: "CodeQL"
 
 on:
   pull_request:
+    types:
+      - synchronize
+      - opened
+      - reopened
     branches: [main]
   schedule:
     - cron: "45 23 * * 5" # Last commit on default branch
