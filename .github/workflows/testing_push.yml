@@ -46,6 +46,8 @@ jobs:
         run: |
           rm -rf docs
           sphinx-build -W --keep-going -a -b dirhtml docs-src docs
+          touch docs/.nojekyll
+
 
       - name: commit changes
         run: |
