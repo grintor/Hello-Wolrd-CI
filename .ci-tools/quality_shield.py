@@ -18,7 +18,6 @@ def main():
     problems_path = ".repo-reports/pylint-report.txt"
     with open(problems_path, "w", encoding="utf-8", newline="\n") as f:
         f.write(report)
-        f.write("\n")
 
     score_color = "red"
     if average_score > 9:
