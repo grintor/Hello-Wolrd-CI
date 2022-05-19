@@ -9,3 +9,4 @@ Sphinx
 sphinx-rtd-theme
 recommonmark
 pytest-cov
+pip-tools
