@@ -7,10 +7,13 @@ on:
   pull_request:
     branches: ["main"]
 
+  repository_dispatch:
+    types: ["my-event"]
+
 jobs:
   cleanup_and_tests:
     runs-on: ubuntu-latest
-
+    name: Run tests
     steps:
       - name: "print context info"
         run: |
