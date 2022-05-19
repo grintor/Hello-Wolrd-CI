@@ -40,10 +40,14 @@ jobs:
         run: |
           pre-commit run --all-files
 
+      - name: build docs
+        run: |
+          python .repo-tools/build_docs.py
+
       - name: commit report
         run: |
           git config --global user.name '🤖 CI Tests'
           git config --global user.email 'ghost@users.noreply.github.com'
-          git commit -am "🤖 Automated CI update"
+          git commit -am "🤖 Automated CI update [skip actions]"
           git push
         continue-on-error: true
