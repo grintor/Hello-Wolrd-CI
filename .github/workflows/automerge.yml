@@ -24,7 +24,6 @@ jobs:
           echo "allow list:" ${{ env.USER_ALLOWLIST }}
           echo "actor approved": ${{contains(fromJSON(env.USER_ALLOWLIST), github.actor)}}
           echo "pull request user approved": ${{contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)}}
-          
 
       - name: automerge
         if: >-
