@@ -1,3 +1,9 @@
+[![code testing](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/testing_pull_request.yml/badge.svg)](https://github.com/grintor/Hello-World-CI/actions/workflows/testing_pull_request.yml)
+[![CodeQL](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yml/badge.svg)](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yml)
+[![code coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/covered_shield.json)](.repo-reports/coverage.txt)
+[![code quality](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/quality_shield.json)](.repo-reports/pylint-report.txt)
+
+
 # Hello-Wolrd-CI
 
 A template for GitHub Actions with pylint, pre-commit, and coverage.py and various other tools
@@ -13,10 +19,3 @@ A template for GitHub Actions with pylint, pre-commit, and coverage.py and vario
 To test, just run "pytest" in the repo root and look in results
 The test coverage reports are located in .repo-reports/coverage/index.html after the tests are ran
 CI will fail if the coverage is not above 90% and if the code quality is not above 90%
-
-
-[![code testing](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/testing.yml/badge.svg)](https://github.com/grintor/Hello-World-CI/actions/workflows/testing.yml)
-[![CodeQL](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yml/badge.svg)](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yml)
-
-[![code coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/covered_shield.json)](.repo-reports/coverage.txt)
-[![code quality](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/quality_shield.json)](.repo-reports/pylint-problems.txt)

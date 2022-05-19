@@ -29,18 +29,31 @@ jobs:
           pip-compile requirements.in -q
           pip install -r requirements.txt
 
-      - name: test with pytest
-        run: |
-          pytest
-
-      - name: pre-commit auto-fix
+      - name: pre-commit auto-fix cleanup 1
+        # this will fix any problems it can which the developer left behind
         run: |
           pre-commit run --all-files
         continue-on-error: true
 
       - name: test with pre-commit
+        # this will this will allow the workflow to fail if there are still issues
         run: |
           pre-commit run --all-files
+
+      - name: test with pytest
+        run: |
+          pytest
+
+      - name: update shields
+        run: |
+          python .ci-tools/coverage_shield.py
+          python .ci-tools/quality_shield.py
+
+      - name: pre-commit auto-fix cleanup 2
+        # this will fix any formatting problems from pytest and .ci-tools/* output
+        run: |
+          pre-commit run --all-files
+        continue-on-error: true
 
       - name: build docs
         run: |

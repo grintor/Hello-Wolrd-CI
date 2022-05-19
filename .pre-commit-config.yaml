@@ -1,4 +1,4 @@
-fail_fast: false # fixers should be false, linters should be true
+fail_fast: false
 exclude: |
   (?x)^(
       docs/ |
