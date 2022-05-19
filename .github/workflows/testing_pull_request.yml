@@ -2,6 +2,10 @@ name: Code Testing
 
 on:
   pull_request:
+    types:
+      - synchronize
+      - opened
+      - reopened
     branches: ["main"]
 
 jobs:
