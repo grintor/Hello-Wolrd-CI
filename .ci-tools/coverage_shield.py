@@ -39,7 +39,8 @@ def main():
                     "label": "Test Coverage",
                     "message": f"{percent_covered}%",
                     "color": covered_color,
-                }
+                },
+                indent=4,
             )
         )
         f.write("\n")
