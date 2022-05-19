@@ -47,6 +47,11 @@ jobs:
           rm -rf docs
           sphinx-build -W --keep-going -a -b dirhtml docs-src docs
 
+      - name: update shields
+        run: |
+          python .ci-tools/coverage_shield.py
+          python .ci-tools/quality_shield.py
+
       - name: commit changes
         run: |
           git config --global user.name 'github-actions[bot]'
