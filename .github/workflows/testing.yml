@@ -71,3 +71,6 @@ jobs:
           git commit -am "🤖 Automated CI update"
           git push
         continue-on-error: true
+        
+      - name: sleep after push
+        run: sleep 30s
