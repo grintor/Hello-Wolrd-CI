@@ -17,7 +17,7 @@ jobs:
           echo "github.event_name:" ${{github.event_name}}
           echo "github.event.action:" ${{github.event.action}}
           echo "github.actor:" ${{github.actor}}
-          echo '${{ toJSON(github) }}'
+          echo "github.event.workflow_run:" ${{toJSON(github.event.workflow_run)}}
       - run: exit 0
 
   on-failure:
@@ -29,5 +29,5 @@ jobs:
           echo "github.event_name:" ${{github.event_name}}
           echo "github.event.action:" ${{github.event.action}}
           echo "github.actor:" ${{github.actor}}
-          echo "github.event.workflow_run:" ${{github.event.workflow_run}}
+          echo "github.event.workflow_run:" ${{toJSON(github.event.workflow_run)}}
       - run: exit 1
