@@ -21,3 +21,4 @@ The test coverage reports are located in .repo-reports/coverage/index.html after
 CI will fail if the coverage is not above 90% and if the code quality is not above 90%
 
 
+
