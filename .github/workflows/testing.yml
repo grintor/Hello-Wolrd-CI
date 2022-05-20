@@ -1,16 +1,14 @@
 name: Code Testing
 
 on:
+  push:
   pull_request:
     branches: ["main"]
-
-  repository_dispatch:
-    types: ["my-event"]
 
 jobs:
   cleanup_and_tests:
     runs-on: ubuntu-latest
-    name: "Code Tests"
+    name: "Code Testing Job"
     steps:
       - name: "print context info"
         run: |
