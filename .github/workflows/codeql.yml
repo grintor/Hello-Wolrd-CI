@@ -10,6 +10,10 @@ on:
   schedule:
     - cron: "45 23 * * 5" # Last commit on default branch
 
+concurrency:
+  group: ci-tests-${{ github.ref }}-codeql
+  cancel-in-progress: true
+
 jobs:
   analyze:
     name: Analyze

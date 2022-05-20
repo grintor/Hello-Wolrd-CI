@@ -5,6 +5,10 @@ on:
   pull_request:
     branches: ["main"]
 
+concurrency:
+  group: ci-tests-${{ github.ref }}-testing
+  cancel-in-progress: true
+
 jobs:
   cleanup_and_tests:
     runs-on: ubuntu-latest
@@ -79,6 +83,3 @@ jobs:
         # this will this will allow the workflow to fail if there were issues in .github/workflows
         run: |
           pre-commit run --all-files
-
-      - name: sleep after push
-        run: sleep 30s
