@@ -3,7 +3,7 @@ name: Required Code Testing
 on:
   workflow_run:
     workflows:
-      - Code Testing
+      - Preflight
     types: 
       - completed
 
