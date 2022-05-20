@@ -2,9 +2,10 @@ name: Required Code Testing
 
 on:
   workflow_run:
-    workflows: ["Code Testing"]
-    types: [completed]
-    #branches: [main]
+    workflows:
+      - Code Testing
+    types: 
+      - completed
 
 jobs:
 
