@@ -1,0 +1,34 @@
+name: Required Code Testing
+
+on:
+  workflow_run:
+    workflows:
+      - Code Testing
+    types: 
+      - completed
+
+jobs:
+
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: "print context info"
+        run: |
+          echo "github.event_name:" ${{github.event_name}}
+          echo "github.event.action:" ${{github.event.action}}
+          echo "github.actor:" ${{github.actor}}
+          echo "github.event.workflow_run:" ${{github.event.workflow_run}}
+      - run: exit 0
+
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - name: "print context info"
+        run: |
+          echo "github.event_name:" ${{github.event_name}}
+          echo "github.event.action:" ${{github.event.action}}
+          echo "github.actor:" ${{github.actor}}
+          echo "github.event.workflow_run:" ${{github.event.workflow_run}}
+      - run: exit 1
