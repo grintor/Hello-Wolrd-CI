@@ -16,7 +16,7 @@ jobs:
         run: |
           echo "github.event_name:" ${{github.event_name}}
           echo "github.event.action:" ${{github.event.action}}
-          echo "github.actor:" ${{github.actor}}
+          echo "github.actor: " ${{github.actor}}
           echo '${{ toJSON(github) }}'
       - run: exit 0
 
