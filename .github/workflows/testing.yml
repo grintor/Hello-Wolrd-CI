@@ -17,6 +17,8 @@ jobs:
           echo "github.actor:" ${{github.actor}}
 
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -68,9 +70,15 @@ jobs:
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git rm -r --cached .
           git add .
+          git reset .github/workflows
           git commit -am "🤖 Automated CI update"
           git push
         continue-on-error: true
+
+      - name: final test with pre-commit
+        # this will this will allow the workflow to fail if there were issues in .github/workflows
+        run: |
+          pre-commit run --all-files
 
       - name: sleep after push
         run: sleep 30s
