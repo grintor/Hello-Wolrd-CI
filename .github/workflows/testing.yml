@@ -1,4 +1,4 @@
-name: Code Testing
+name: Preflight
 
 on:
   push:
