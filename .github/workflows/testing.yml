@@ -15,7 +15,6 @@ jobs:
           echo "github.event_name:" ${{github.event_name}}
           echo "github.event.action:" ${{github.event.action}}
           echo "github.actor:" ${{github.actor}}
-          exit 1
 
       - uses: actions/checkout@v2
 
