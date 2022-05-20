@@ -8,10 +8,10 @@ on:
       - completed
 
 jobs:
-  on-success:
+  check-parent-job-status:
+    name: Required Workflows Succeeded
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    # can also do if: ${{ github.event.workflow_run.event == 'push' }}
+    # if: ${{ github.event.workflow_run.event == 'push' }}
     steps:
       - name: "print context info"
         run: |
@@ -19,16 +19,11 @@ jobs:
           echo "github.event.action:" ${{github.event.action}}
           echo "github.actor:" ${{github.actor}}
           echo "github.event.workflow_run:" '${{toJSON(github.event.workflow_run)}}'
-      - run: exit 0
 
-  on-failure:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-    steps:
-      - name: "print context info"
-        run: |
-          echo "github.event_name:" ${{github.event_name}}
-          echo "github.event.action:" ${{github.event.action}}
-          echo "github.actor:" ${{github.actor}}
-          echo "github.event.workflow_run:" '${{toJSON(github.event.workflow_run)}}'
-      - run: exit 1
+      - name: Parent Job Failure
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        run: exit 0
+
+      - name: Parent Job Success
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        run: exit 0
