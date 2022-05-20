@@ -6,7 +6,7 @@ on:
     branches: ["main"]
 
 concurrency:
-  group: ci-tests-${{ github.ref }}-testing
+  group: ci-tests-${{github.ref}}-testing
   cancel-in-progress: true
 
 jobs:
@@ -20,9 +20,18 @@ jobs:
           echo "github.event.action:" ${{github.event.action}}
           echo "github.actor:" ${{github.actor}}
 
-      - uses: actions/checkout@v2
+      - name: checkout with PAT
+        id: checkout_pat
+        uses: actions/checkout@v2
+        continue-on-error: true
         with:
           token: ${{ secrets.PAT }}
+
+      - name: checkout with GITHUB_TOKEN
+        if: steps.checkout_pat.outcome != 'success'
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v2
