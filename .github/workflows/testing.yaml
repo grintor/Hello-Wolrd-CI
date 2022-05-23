@@ -21,6 +21,8 @@ jobs:
           echo "github.actor:" ${{github.actor}}
 
       - name: attempt checkout with PAT
+        # if we don't use a PAT, then the git push cannot trigger a push event
+        # if there is no push event, then the tests cannot run and auto-merge cannot happen
         id: checkout_pat
         uses: actions/checkout@v2
         continue-on-error: true

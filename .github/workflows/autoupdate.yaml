@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: attempt autoupdate with PAT
+        # if we don't use a PAT, then the pull-request event will fire after auto-update.
+        # if no pull-request event fires, then our testing cannot run again, and so auto-merge would be impossible
         id: autoupdate_pat
         continue-on-error: true
         uses: docker://chinthakagodawita/autoupdate-action:v1
