@@ -1,4 +1,4 @@
-name: CodeQL workflow
+name: codeql workflow
 
 on:
   pull_request:
@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   codeql_job:
-    name: CodeQL job
+    name: codeql job
     runs-on: ubuntu-latest
     permissions:
       actions: read
