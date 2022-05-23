@@ -1,5 +1,5 @@
-[![code testing](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/testing_pull_request.yml/badge.svg)](https://github.com/grintor/Hello-World-CI/actions/workflows/testing_pull_request.yml)
-[![CodeQL](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yml/badge.svg)](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yml)
+[![code testing](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/testing_pull_request.yaml/badge.svg)](https://github.com/grintor/Hello-World-CI/actions/workflows/testing_pull_request.yaml)
+[![CodeQL](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yaml/badge.svg)](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yaml)
 [![code coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/covered_shield.json)](.repo-reports/coverage.txt)
 [![code quality](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/grintor/Hello-Wolrd-CI/main/.repo-shields/quality_shield.json)](.repo-reports/pylint-report.txt)
 
