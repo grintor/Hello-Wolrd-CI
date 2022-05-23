@@ -81,33 +81,29 @@ jobs:
         continue-on-error: true
 
       - name:
-          stage changes
-          # this will stage all changes except those in .github/workflows
-          # CI cannot edit .github/workflows files, so this is a workaround
-          # By doing it this way, we auto-fail badly formatted workflow files
-          # This should not affect any developers using the pre-commit hook
+          revert workflows
+          # changes to workflows cannot be committed by CI normally.
+          # revert those changes if they exist.
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm -r --cached .
-          git add .
-          git reset .github/workflows
-          git reset --hard .github/workflows
-        continue-on-error: true
+          git checkout HEAD .github/workflows
+          git clean -df .github/workflows
 
       - name:
-          final test with pre-commit
-          # this will allow the workflow to fail based on pre-commit findings
-          # needs to run before git push so we don't push failing code
-          # needs to run after git reset --hard above so it will fail on workflow file edits
-          # notice this one does not have continue-on-error: true
+          test with pre-commit
+          # This is the actual pre-commit test run.
+          # It will fail if any linters are unhappy
+          # it will also fail if .github/workflows is untidy
         run: |
           pre-commit run --all-files
 
       - name:
           commit changes
-          # this will commit all changes except those in .github/workflows
+          # this will commit any changes that CI made to the branch
         run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm -r --cached .
+          git add .
           git commit -am "🤖 Automated CI update"
           git push
         continue-on-error: true
