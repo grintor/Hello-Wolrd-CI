@@ -1,9 +1,10 @@
-name: automerge
+name: automerge workflow
 on:
   pull_request_target:
 
 jobs:
-  automerge:
+  automerge_job:
+    name: automerge job
     runs-on: ubuntu-latest
     env:
       # append additional users to the USER_ALLOWLIST to allow automerge for them

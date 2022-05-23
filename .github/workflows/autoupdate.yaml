@@ -1,11 +1,11 @@
-name: autoupdate
+name: autoupdate workflow
 
 on:
   pull_request:
 
 jobs:
-  autoupdate:
-    name: autoupdate
+  autoupdate_job:
+    name: autoupdate job
     runs-on: ubuntu-latest
     steps:
       uses: chinthakagodawita/autoupdate@v1

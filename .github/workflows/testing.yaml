@@ -1,4 +1,4 @@
-name: Code Testing
+name: code testing workflow
 
 on:
   push:
@@ -10,9 +10,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  cleanup_and_tests:
+  code_testing_job:
     runs-on: ubuntu-latest
-    name: Code Testing Job
+    name: code testing job
     steps:
       - name: print context info
         run: |
@@ -20,14 +20,14 @@ jobs:
           echo "github.event.action:" ${{github.event.action}}
           echo "github.actor:" ${{github.actor}}
 
-      - name: checkout with PAT
+      - name: attempt checkout with PAT
         id: checkout_pat
         uses: actions/checkout@v2
         continue-on-error: true
         with:
           token: ${{ secrets.PAT }}
 
-      - name: checkout with GITHUB_TOKEN
+      - name: fallback to checkout with GITHUB_TOKEN
         if: steps.checkout_pat.outcome != 'success'
         uses: actions/checkout@v2
         with:
@@ -68,9 +68,9 @@ jobs:
 
       - name: build docs
         run: |
-          rm -rf .docs
-          sphinx-build -W --keep-going -a -b dirhtml docs-src .docs
-          touch .docs/.nojekyll
+          rm -rf docs
+          sphinx-build -W --keep-going -a -b dirhtml docs-src docs
+          touch docs/.nojekyll
 
       - name:
           pre-commit auto-fix cleanup 2
