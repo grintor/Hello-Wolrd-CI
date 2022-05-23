@@ -8,7 +8,7 @@ def main():
 
     with io.StringIO() as f:
         results = Run(
-            [".", "--recursive=y"],
+            [".", "--recursive=y", "--rcfile", ".pylintrc.ini"],
             reporter=TextReporter(f),
             exit=False,
         )
