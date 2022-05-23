@@ -1,3 +1,48 @@
+Output From recursive pylint:
+************* Module hello_world
+hello_world.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+hello_world.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module is_complex
+is_complex.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+is_complex.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)
+is_complex.py:3:4: R1705: Unnecessary "elif" after "return", remove the leading "el" from "elif" (no-else-return)
+is_complex.py:1:0: R0911: Too many return statements (8/6) (too-many-return-statements)
+************* Module complex_test
+tests/complex_test.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/complex_test.py:9:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module hello_world_test
+tests/hello_world_test.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/hello_world_test.py:9:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module _docs_build_test
+tests/_docs_build_test.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/_docs_build_test.py:5:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/_docs_build_test.py:7:11: W1510: Using subprocess.run without explicitly set `check` is not recommended. (subprocess-run-check)
+tests/_docs_build_test.py:22:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module coverage_shield
+.ci-tools/coverage_shield.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+.ci-tools/coverage_shield.py:6:0: C0116: Missing function or method docstring (missing-function-docstring)
+.ci-tools/coverage_shield.py:9:21: W1510: Using subprocess.run without explicitly set `check` is not recommended. (subprocess-run-check)
+.ci-tools/coverage_shield.py:13:53: C0103: Variable name "f" doesn't conform to snake_case naming style (invalid-name)
+.ci-tools/coverage_shield.py:16:4: W1510: Using subprocess.run without explicitly set `check` is not recommended. (subprocess-run-check)
+.ci-tools/coverage_shield.py:20:71: C0103: Variable name "f" doesn't conform to snake_case naming style (invalid-name)
+.ci-tools/coverage_shield.py:34:67: C0103: Variable name "f" doesn't conform to snake_case naming style (invalid-name)
+************* Module quality_shield
+.ci-tools/quality_shield.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+.ci-tools/quality_shield.py:7:0: C0116: Missing function or method docstring (missing-function-docstring)
+.ci-tools/quality_shield.py:9:26: C0103: Variable name "f" doesn't conform to snake_case naming style (invalid-name)
+.ci-tools/quality_shield.py:19:69: C0103: Variable name "f" doesn't conform to snake_case naming style (invalid-name)
+.ci-tools/quality_shield.py:30:67: C0103: Variable name "f" doesn't conform to snake_case naming style (invalid-name)
+.ci-tools/quality_shield.py:2:0: C0411: standard import "import json" should be placed before "from pylint.lint import Run" (wrong-import-order)
+.ci-tools/quality_shield.py:4:0: C0411: standard import "import io" should be placed before "from pylint.lint import Run" (wrong-import-order)
+************* Module conf
+docs-src/conf.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+docs-src/conf.py:10:0: C0103: Constant name "project" doesn't conform to UPPER_CASE naming style (invalid-name)
+docs-src/conf.py:11:0: C0103: Constant name "author" doesn't conform to UPPER_CASE naming style (invalid-name)
+docs-src/conf.py:12:0: C0103: Constant name "release" doesn't conform to UPPER_CASE naming style (invalid-name)
+docs-src/conf.py:21:0: C0103: Constant name "autosectionlabel_prefix_document" doesn't conform to UPPER_CASE naming style (invalid-name)
+docs-src/conf.py:22:0: C0103: Constant name "html_show_sourcelink" doesn't conform to UPPER_CASE naming style (invalid-name)
+docs-src/conf.py:38:0: C0103: Constant name "html_theme" doesn't conform to UPPER_CASE naming style (invalid-name)
+docs-src/conf.py:46:0: C0103: Constant name "master_doc" doesn't conform to UPPER_CASE naming style (invalid-name)
 
-------------------------------------
-Your code has been rated at 10.00/10
+-----------------------------------
+Your code has been rated at 6.87/10
