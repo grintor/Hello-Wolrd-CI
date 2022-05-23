@@ -4,9 +4,6 @@ on:
   pull_request:
     branches: [main]
 
-  repository_dispatch:
-    types: [my-event]
-
   schedule:
     - cron: 45 23 * * 5 # Last commit on default branch
 
