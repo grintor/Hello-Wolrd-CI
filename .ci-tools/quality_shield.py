@@ -1,7 +1,8 @@
-from pylint.lint import Run
-import json
-from pylint.reporters.text import TextReporter
 import io
+import json
+
+from pylint.lint import Run
+from pylint.reporters.text import TextReporter
 
 
 def main():
