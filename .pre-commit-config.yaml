@@ -16,9 +16,6 @@ repos:
       - id: fix-byte-order-marker
       - id: mixed-line-ending
         args: [--fix=lf]
-        exclude: "requirements.txt" # todo: https://github.com/jazzband/pip-tools/issues/1448
-      - id: pretty-format-json
-        args: [--autofix, --indent=4, --no-sort-keys, --no-ensure-ascii]
 
   - repo: https://github.com/psf/black
     rev: 22.3.0
@@ -29,13 +26,13 @@ repos:
     rev: v2.1.0
     hooks:
       - id: codespell
-        args: [--ignore-words=.dictionary, -w]
+        args: [--ignore-words=.dictionary.txt, -w]
 
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: v2.6.2
     hooks:
       - id: prettier
-        types_or: [css, javascript, html, yaml]
+        types_or: [css, javascript, html, yaml, json]
 
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v8.15.0
@@ -43,11 +40,9 @@ repos:
       - id: eslint
         additional_dependencies:
           [
-            "eslint@8.15.0",
-            "eslint-config-prettier@8.5.0",
-            "@babel/eslint-parser@7.17.0",
-            "@babel/core@7.17.10",
-            "eslint-plugin-no-unsanitized@4.0.1",
+            eslint@8.15.0,
+            eslint-config-prettier@8.5.0,
+            eslint-plugin-no-unsanitized@4.0.1,
           ]
         args: [--fix]
 
@@ -64,6 +59,7 @@ repos:
     rev: 4.0.1
     hooks:
       - id: flake8
+        args: [--config, .flake8.ini]
         additional_dependencies:
           [
             flake8-pytest-style==1.6.0,
@@ -97,20 +93,23 @@ repos:
     hooks:
       - id: validate-html
 
-  - repo: https://github.com/pre-commit/mirrors-scss-lint
-    rev: v0.59.0
-    hooks:
-      - id: scss-lint
-
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
     rev: v1.2.4
     hooks:
       - id: python-safety-dependencies-check
 
-  # pylint should be last and verbose because it has the most useful report
+  - repo: https://github.com/streetsidesoftware/cspell-cli
+    rev: v6.0.0
+    hooks:
+      - id: cspell
+        args: [--config, .cspell.yaml, --no-summary, --gitignore, --no-progress]
+        types_or: [css, javascript, html]
+
+    # pylint should be last and verbose because it has the most useful report
   - repo: https://github.com/PyCQA/pylint
     rev: v2.13.8
     hooks:
       - id: pylint
         verbose: true
+        args: [--rcfile, .pylintrc.ini, --score=n]
         additional_dependencies: [pylint_requests==0.1.1, pyenchant==3.2.2]
