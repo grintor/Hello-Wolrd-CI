@@ -48,9 +48,9 @@ jobs:
           sudo apt-get install -y aspell
 
       - name:
-          pre-commit auto-fix cleanup 1
+          pre-commit initial cleanup
           # this will fix any problems it can which the developer left behind
-          # needs to run before read-only tests because it may break something
+          # needs to run before pytest because it may break something
         run: |
           pre-commit run --all-files
         continue-on-error: true
@@ -73,27 +73,41 @@ jobs:
           touch docs/.nojekyll
 
       - name:
-          pre-commit auto-fix cleanup 2
+          pre-commit final cleanup
           # this will fix any formatting problems from output of pytest and .ci-tools/*
+          # needs to run after pytest and .ci-tools/* to clean up their output
         run: |
           pre-commit run --all-files
         continue-on-error: true
 
       - name:
-          commit changes
-          # this will commit all changes except those in .github/workflows
+          stage changes
+          # this will stage all changes except those in .github/workflows
+          # CI cannot edit .github/workflows files, so this is a workaround
+          # By doing it this way, we auto-fail badly formatted workflow files
+          # This should not affect any developers using the pre-commit hook
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git rm -r --cached .
           git add .
           git reset .github/workflows
-          git commit -am "🤖 Automated CI update"
-          git push
+          git reset --hard .github/workflows
         continue-on-error: true
 
       - name:
           final test with pre-commit
-          # this will this will allow the workflow to fail based on pre-commit findings
+          # this will allow the workflow to fail based on pre-commit findings
+          # needs to run before git push so we don't push failing code
+          # needs to run after git reset --hard above so it will fail on workflow file edits
+          # notice this one does not have continue-on-error: true
         run: |
           pre-commit run --all-files
+
+      - name:
+          commit changes
+          # this will commit all changes except those in .github/workflows
+        run: |
+          git commit -am "🤖 Automated CI update"
+          git push
+        continue-on-error: true
