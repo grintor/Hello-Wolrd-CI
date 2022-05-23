@@ -1,6 +1,6 @@
 import json
-import subprocess
 import os
+import subprocess
 
 
 def main():
