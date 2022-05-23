@@ -26,7 +26,9 @@ jobs:
           echo "actor approved": ${{contains(fromJSON(env.USER_ALLOWLIST), github.actor)}}
           echo "pull request user approved": ${{contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)}}
 
-      - name: automerge
+      - name: attempt automerge with PAT
+        id: automerge_pat
+        continue-on-error: true
         if: >-
           ${{
             contains(fromJSON(env.USER_ALLOWLIST), github.actor) &&
@@ -35,5 +37,18 @@ jobs:
         uses: peter-evans/enable-pull-request-automerge@v2
         with:
           token: ${{secrets.PAT}}
+          pull-request-number: ${{github.event.pull_request.number}}
+          merge-method: squash
+
+      - name: fallback to automerge with GITHUB_TOKEN
+        if: >-
+          ${{
+            steps.automerge_pat.outcome != 'success' &&
+            contains(fromJSON(env.USER_ALLOWLIST), github.actor) &&
+            contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)
+          }}
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
           pull-request-number: ${{github.event.pull_request.number}}
           merge-method: squash
