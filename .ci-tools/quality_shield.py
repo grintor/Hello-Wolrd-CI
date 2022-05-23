@@ -32,14 +32,12 @@ def main():
             json.dumps(
                 {
                     "schemaVersion": 1,
-                    "label": "Code Quality",
+                    "label": "code quality",
                     "message": f"{average_score}/10",
                     "color": score_color,
                 },
-                indent=4,
             )
         )
-        f.write("\n")
 
     return average_score
 
