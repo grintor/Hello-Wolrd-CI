@@ -2,6 +2,9 @@ name: autoupdate workflow
 
 on:
   pull_request:
+    branches: [main]
+  push:
+    branches: [main]
 
 concurrency:
   group: ci-tests-${{github.ref}}-autoupdate
