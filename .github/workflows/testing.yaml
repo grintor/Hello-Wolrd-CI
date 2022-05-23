@@ -85,7 +85,7 @@ jobs:
           # changes to workflows cannot be committed by CI normally.
           # revert those changes if they exist.
         run: |
-          git reset --hard .github/workflows
+          git checkout HEAD .github/workflows
           git clean -df .github/workflows
 
       - name:
