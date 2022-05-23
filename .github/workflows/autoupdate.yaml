@@ -18,9 +18,11 @@ jobs:
         uses: docker://chinthakagodawita/autoupdate-action:v1
         env:
           GITHUB_TOKEN: "${{secrets.PAT}}"
+          PR_FILTER: "protected"
 
       - name: fallback to autoupdate with GITHUB_TOKEN
         if: steps.autoupdate_pat.outcome != 'success'
         uses: docker://chinthakagodawita/autoupdate-action:v1
         env:
           GITHUB_TOKEN: "${{secrets.GITHUB_TOKEN}}"
+          PR_FILTER: "protected"
