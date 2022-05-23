@@ -27,6 +27,8 @@ jobs:
           echo "pull request user approved": ${{contains(fromJSON(env.USER_ALLOWLIST), github.event.pull_request.user.login)}}
 
       - name: attempt automerge with PAT
+        # if we don't use a PAT then the push event will not fire when the pull request is merged into main
+        # if the push event does not fire, then the autoupdate workflow cannot auto-run on merge
         id: automerge_pat
         continue-on-error: true
         if: >-
