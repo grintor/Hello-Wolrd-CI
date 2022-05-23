@@ -54,6 +54,7 @@ repos:
         fail_fast: true # applies to check-yaml as well as every hook below
       - id: name-tests-test
       - id: no-commit-to-branch
+        stages: [commit]
 
   - repo: https://github.com/PyCQA/flake8
     rev: 4.0.1

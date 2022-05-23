@@ -50,21 +50,20 @@ jobs:
           sudo apt-get update -y
           sudo apt-get install -y aspell
 
-      - name:
-          pre-commit initial cleanup
-          # this will fix any problems it can which the developer left behind
-          # needs to run before pytest because it may break something
+      - name: pre-commit initial cleanup
+        # this will fix any problems it can which the developer left behind
+        # needs to run before pytest because it may break something
         run: |
-          pre-commit run --all-files
+          pre-commit run --all-files --hook-stage manual
         continue-on-error: true
 
       - name: test with pytest
         run: |
           pytest
 
-      - name:
-          update shields
-          # relies on pytest having run so that the coverage database exists.
+      - name: update shields
+        # relies on pytest having run so that the coverage database exists.
+        if: github.ref != 'refs/heads/main'
         run: |
           python .ci-tools/coverage_shield.py
           python .ci-tools/quality_shield.py
@@ -75,33 +74,30 @@ jobs:
           sphinx-build -W --keep-going -a -b dirhtml docs-src docs
           touch docs/.nojekyll
 
-      - name:
-          pre-commit final cleanup
-          # this will fix any formatting problems from output of pytest and .ci-tools/*
-          # needs to run after pytest and .ci-tools/* to clean up their output
+      - name: pre-commit final cleanup
+        # this will fix any formatting problems from output of pytest and .ci-tools/*
+        # needs to run after pytest and .ci-tools/* to clean up their output
         run: |
-          pre-commit run --all-files
+          pre-commit run --all-files --hook-stage manual
         continue-on-error: true
 
-      - name:
-          revert workflows
-          # changes to workflows cannot be committed by CI normally.
-          # revert those changes if they exist.
+      - name: revert workflows
+        # changes to workflows cannot be committed by CI normally.
+        # revert those changes if they exist.
         run: |
           git checkout HEAD .github/workflows
           git clean -df .github/workflows
 
-      - name:
-          test with pre-commit
-          # This is the actual pre-commit test run.
-          # It will fail if any linters are unhappy
-          # it will also fail if .github/workflows is untidy
+      - name: test with pre-commit
+        # This is the actual pre-commit test run.
+        # It will fail if any linters are unhappy
+        # it will also fail if .github/workflows is untidy
         run: |
-          pre-commit run --all-files
+          pre-commit run --all-files --hook-stage manual
 
-      - name:
-          commit changes
-          # this will commit any changes that CI made to the branch
+      - name: commit changes
+        # this will commit any changes that CI made to the branch
+        if: github.ref != 'refs/heads/main'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
