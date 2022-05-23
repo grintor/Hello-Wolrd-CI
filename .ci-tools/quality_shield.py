@@ -17,6 +17,7 @@ def main():
     average_score = round(results.linter.stats.global_note, 1)
     problems_path = ".repo-reports/pylint-report.txt"
     with open(problems_path, "w", encoding="utf-8", newline="\n") as f:
+        f.write("Output From recursive pylint:\n")
         f.write(report)
 
     score_color = "red"

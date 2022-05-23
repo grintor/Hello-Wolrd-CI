@@ -1,9 +1,10 @@
-name: automerge
+name: automerge workflow
 on:
   pull_request_target:
 
 jobs:
-  automerge:
+  automerge_job:
+    name: automerge job
     runs-on: ubuntu-latest
     env:
       # append additional users to the USER_ALLOWLIST to allow automerge for them
@@ -13,7 +14,7 @@ jobs:
           "dependabot"
         ]'
     steps:
-      - name: "Print Context Info"
+      - name: Print Context Info
         run: |
           echo "event name:" ${{github.event_name}}
           echo "event action:" ${{github.event.action}}
