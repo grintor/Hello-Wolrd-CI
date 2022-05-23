@@ -36,14 +36,12 @@ def main():
             json.dumps(
                 {
                     "schemaVersion": 1,
-                    "label": "Test Coverage",
+                    "label": "test coverage",
                     "message": f"{percent_covered}%",
                     "color": covered_color,
                 },
-                indent=4,
             )
         )
-        f.write("\n")
 
     return percent_covered
 
