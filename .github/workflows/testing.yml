@@ -3,7 +3,7 @@ name: Code Testing
 on:
   push:
   pull_request:
-    branches: ["main"]
+    branches: [main]
 
 concurrency:
   group: ci-tests-${{github.ref}}-testing
@@ -12,9 +12,9 @@ concurrency:
 jobs:
   cleanup_and_tests:
     runs-on: ubuntu-latest
-    name: "Code Testing Job"
+    name: Code Testing Job
     steps:
-      - name: "print context info"
+      - name: print context info
         run: |
           echo "github.event_name:" ${{github.event_name}}
           echo "github.event.action:" ${{github.event.action}}
@@ -44,40 +44,44 @@ jobs:
           pip install pip-tools
           pip-compile requirements.in -q
           pip install -r requirements.txt
+          sudo apt-get update -y
+          sudo apt-get install -y aspell
 
-      - name: pre-commit auto-fix cleanup 1
-        # this will fix any problems it can which the developer left behind
+      - name:
+          pre-commit auto-fix cleanup 1
+          # this will fix any problems it can which the developer left behind
+          # needs to run before read-only tests because it may break something
         run: |
           pre-commit run --all-files
         continue-on-error: true
-
-      - name: test with pre-commit
-        # this will this will allow the workflow to fail if there are still issues
-        run: |
-          pre-commit run --all-files
 
       - name: test with pytest
         run: |
           pytest
 
-      - name: update shields
+      - name:
+          update shields
+          # relies on pytest having run so that the coverage database exists.
         run: |
           python .ci-tools/coverage_shield.py
           python .ci-tools/quality_shield.py
 
-      - name: pre-commit auto-fix cleanup 2
-        # this will fix any formatting problems from pytest and .ci-tools/* output
+      - name: build docs
+        run: |
+          rm -rf .docs
+          sphinx-build -W --keep-going -a -b dirhtml docs-src .docs
+          touch .docs/.nojekyll
+
+      - name:
+          pre-commit auto-fix cleanup 2
+          # this will fix any formatting problems from output of pytest and .ci-tools/*
         run: |
           pre-commit run --all-files
         continue-on-error: true
 
-      - name: build docs
-        run: |
-          rm -rf docs
-          sphinx-build -W --keep-going -a -b dirhtml docs-src docs
-          touch docs/.nojekyll
-
-      - name: commit changes
+      - name:
+          commit changes
+          # this will commit all changes except those in .github/workflows
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -88,7 +92,8 @@ jobs:
           git push
         continue-on-error: true
 
-      - name: final test with pre-commit
-        # this will this will allow the workflow to fail if there were issues in .github/workflows
+      - name:
+          final test with pre-commit
+          # this will this will allow the workflow to fail based on pre-commit findings
         run: |
           pre-commit run --all-files

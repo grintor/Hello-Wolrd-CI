@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: CodeQL
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
     types: [my-event]
 
   schedule:
-    - cron: "45 23 * * 5" # Last commit on default branch
+    - cron: 45 23 * * 5 # Last commit on default branch
 
 concurrency:
   group: ci-tests-${{github.ref}}-codeql
@@ -26,10 +26,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ["javascript", "python"]
+        language: [javascript, python]
 
     steps:
-      - name: "print context info"
+      - name: print context info
         run: |
           echo "github.event_name:" ${{github.event_name}}
           echo "github.event.action:" ${{github.event.action}}

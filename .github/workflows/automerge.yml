@@ -13,7 +13,7 @@ jobs:
           "dependabot"
         ]'
     steps:
-      - name: "Print Context Info"
+      - name: Print Context Info
         run: |
           echo "event name:" ${{github.event_name}}
           echo "event action:" ${{github.event.action}}
