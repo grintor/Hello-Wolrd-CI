@@ -4,7 +4,7 @@ on:
   pull_request:
 
 concurrency:
-  group: ci-tests-${{github.ref}}-testing
+  group: ci-tests-${{github.ref}}-autoupdate
   cancel-in-progress: true
 
 jobs:
