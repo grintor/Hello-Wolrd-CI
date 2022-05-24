@@ -11,7 +11,7 @@ rule "MD009", :br_spaces => 0 # Trailing spaces
 rule "MD010" # Hard tabs
 rule "MD011" # Reversed link syntax
 rule "MD012" # Multiple consecutive blank lines
-rule "MD013", :line_length => 88, :code_blocks => true, :tables => true # Line length
+rule "MD013", :line_length => 120, :code_blocks => true, :tables => true # Line length
 rule "MD014" # Dollar signs used before commands without showing output
 rule "MD018" # No space after hash on atx style header
 rule "MD019" # Multiple spaces after hash on atx style header
