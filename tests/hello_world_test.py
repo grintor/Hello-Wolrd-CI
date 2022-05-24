@@ -1,10 +1,7 @@
-import os
-import sys
-
-if os.getcwd() not in sys.path:
-    sys.path.insert(1, os.getcwd())
-import hello_world  # pylint: disable=wrong-import-position
+import src.hello_world
 
 
-def test_hello_world():
-    assert hello_world.function1() == "hello world"
+def test_hello_world(capsys):
+    src.hello_world.main()
+    captured = capsys.readouterr()
+    assert captured.out == "Hello world!\n"

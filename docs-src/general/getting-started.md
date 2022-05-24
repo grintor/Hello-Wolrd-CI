@@ -3,11 +3,11 @@
 ## 1) use the template
 
 1. **Go here**
-   foo bar
+    foo bar
 2. **Do this**
-   foo bar
+    foo bar
 3. **Try it out and customize with our Automations**
-   foo bar
+    foo bar
 
 ## 2) enable the actions
 
