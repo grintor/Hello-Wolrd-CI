@@ -7,14 +7,22 @@ def main():
     # assumes coverage.py has already run so the coverage db file already exists
 
     report_process = subprocess.run(
-        ["coverage", "report", "--no-skip-covered"], capture_output=True
+        ["coverage", "report", "--no-skip-covered", "--rcfile=.coveragerc.ini"],
+        capture_output=True,
     )
 
     with open(".repo-reports/coverage.txt", "wb") as f:
         f.write(report_process.stdout)
 
     subprocess.run(
-        ["coverage", "json", "-o", ".repo-reports/coverage.json", "--pretty-print"]
+        [
+            "coverage",
+            "json",
+            "-o",
+            ".repo-reports/coverage.json",
+            "--pretty-print",
+            "--rcfile=.coveragerc.ini",
+        ]
     )
 
     with open(".repo-reports/coverage.json", "r", encoding="utf-8") as f:
