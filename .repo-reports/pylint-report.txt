@@ -1,4 +1,6 @@
 output from recursive pylint:
+************* Module src.hello_world
+src/hello_world.py:5:0: C0104: Disallowed name "foo" (disallowed-name)
 
-------------------------------------
-Your code has been rated at 10.00/10
+-----------------------------------
+Your code has been rated at 9.88/10
