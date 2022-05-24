@@ -39,7 +39,7 @@ def main():
         covered_color = "#34D058"
 
     shield_path = ".repo-shields/covered_shield.json"
-    with open(shield_path, "w", encoding="utf-8", newline="\n") as f:
+    with open(shield_path, "w+", encoding="utf-8", newline="\n") as f:
         f.write(
             json.dumps(
                 {
