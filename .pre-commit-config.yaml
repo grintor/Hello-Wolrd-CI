@@ -95,7 +95,7 @@ repos:
     rev: 0.11.2
     hooks:
       - id: doc8
-        args: ["--max-line-length", "120", "--file-encoding", "utf-8"]
+        args: ["--max-line-length", "119", "--file-encoding", "utf-8"]
 
   - repo: https://github.com/markdownlint/markdownlint
     rev: v0.9.0
