@@ -132,11 +132,12 @@ repos:
         args: [--config, .cspell.yaml, --no-summary, --gitignore, --no-progress]
         types_or: [css, javascript, html]
 
-    # pylint should be last and verbose because it has the most useful non-Boolean report
-  - repo: https://github.com/PyCQA/pylint
-    rev: v2.13.8
+  - repo: local
     hooks:
       - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
         verbose: true
+        types: [python]
         args: [--rcfile, .pylintrc.ini, --score=n]
-        additional_dependencies: [pylint_requests==0.1.1, pyenchant==3.2.2]
