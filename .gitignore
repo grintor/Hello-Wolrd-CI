@@ -3,3 +3,4 @@ __pycache__
 /.repo-reports/docs-preview
 .coverage
 .doctrees
+/venv
