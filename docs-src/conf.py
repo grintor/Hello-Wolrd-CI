@@ -7,7 +7,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "Hello World"
+project = "Hello World CI"
 author = "Chris Wheeler"
 release = "0.1"
 
