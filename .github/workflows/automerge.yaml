@@ -11,7 +11,7 @@ jobs:
       USER_ALLOWLIST: |
         '[
           "${{github.repository_owner}}",
-          "dependabot"
+          "dependabot[bot]"
         ]'
     steps:
       - name: Print Context Info
