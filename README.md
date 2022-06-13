@@ -1,4 +1,4 @@
-# Hello-World-CI
+# A Baseline CI Template
 
 [![code testing](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/testing.yaml/badge.svg)](https://github.com/grintor/CI_Baseline/actions/workflows/testing.yaml)
 [![CodeQL](https://github.com/grintor/Hello-Wolrd-CI/actions/workflows/codeql.yaml/badge.svg)](https://github.com/grintor/CI_Baseline/actions/workflows/codeql.yaml)
