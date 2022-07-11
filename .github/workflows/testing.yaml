@@ -35,9 +35,11 @@ jobs:
         id: cache-pip
         uses: actions/cache@v3
         with:
-          key: >-
-            ${{ runner.os }}- ${{ steps.setup-python.outputs.python-version }}- ${{ env.pythonLocation }}-
-            ${{hashFiles('requirements.txt') }}
+          key: "${{ runner.os }}-\
+            ${{ steps.setup-python.outputs.python-version }}-\
+            ${{ env.pythonLocation }}-\
+            ${{hashFiles('requirements.txt') }}"
+
           path: |
             ~/.cache/pip
             ${{ env.pythonLocation }}
