@@ -35,7 +35,8 @@ jobs:
         id: cache-pip
         uses: actions/cache@v3
         with:
-          key: "${{ runner.os }}-\
+          key: "cache-pip-\
+            ${{ runner.os }}-\
             ${{ steps.setup-python.outputs.python-version }}-\
             ${{ env.pythonLocation }}-\
             ${{hashFiles('requirements.txt') }}"
@@ -43,6 +44,19 @@ jobs:
           path: |
             ~/.cache/pip
             ${{ env.pythonLocation }}
+
+      - name: Cache pre-commit
+        id: cache-precommit
+        uses: actions/cache@v3
+        with:
+          key: "cache-precommit-\
+            ${{ runner.os }}-\
+            ${{ steps.setup-python.outputs.python-version }}-\
+            ${{ env.pythonLocation }}-\
+            ${{hashFiles('.pre-commit-config.yaml') }}"
+
+          path: |
+            ~/.cache/pre-commit
 
       - name: List the state of pip modules
         continue-on-error: true
