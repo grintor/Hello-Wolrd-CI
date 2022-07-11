@@ -1,9 +1,6 @@
 output from recursive pylint:
 ************* Module .pylintrc.ini
 .pylintrc.ini:1:0: E0015: Unrecognized option found: optimize-ast, files-output, bad-functions, function-name-hint, variable-name-hint, const-name-hint, attr-name-hint, argument-name-hint, class-attribute-name-hint, inlinevar-name-hint, class-name-hint, module-name-hint, method-name-hint (unrecognized-option)
-.pylintrc.ini:1:0: R0022: Useless option value for '--disable', 'old-division' was removed from pylint, see https://github.com/PyCQA/pylint/pull/4942. (useless-option-value)
-.pylintrc.ini:1:0: R0022: Useless option value for '--disable', 'bad-whitespace' was removed from pylint, see https://github.com/PyCQA/pylint/pull/3577. (useless-option-value)
-.pylintrc.ini:1:0: R0022: Useless option value for '--disable', 'bad-continuation' was removed from pylint, see https://github.com/PyCQA/pylint/pull/3571. (useless-option-value)
 
 ------------------------------------
 Your code has been rated at 10.00/10
