@@ -39,8 +39,7 @@ jobs:
             ~/.cache/pip
           key: ${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('requirements.txt') }}
 
-      - if: ${{ steps.cache-pip.outputs.cache-hit == 'true' }}
-        name: List the state of node modules
+      - name: List the state of node modules
         continue-on-error: true
         run: |
           pip cache dir
