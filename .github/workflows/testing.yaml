@@ -35,12 +35,14 @@ jobs:
         id: cache-pip
         uses: actions/cache@v3
         with:
-          key: ${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('requirements.txt') }}
+          key: >-
+            ${{ runner.os }}- ${{ steps.setup-python.outputs.python-version }}- ${{ env.pythonLocation }}-
+            ${{hashFiles('requirements.txt') }}
           path: |
             ~/.cache/pip
-            ${{ env.pythonLocation }}/lib/python3.*/site-packages
+            ${{ env.pythonLocation }}
 
-      - name: List the state of pip modules...
+      - name: List the state of pip modules
         continue-on-error: true
         run: |
           pip cache dir
