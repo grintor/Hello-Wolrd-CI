@@ -40,7 +40,7 @@ jobs:
             ~/.cache/pip
             ${{ env.pythonLocation }}/lib/python3.*/site-packages
 
-      - name: List the state of pip modules
+      - name: List the state of pip modules...
         continue-on-error: true
         run: |
           pip cache dir
