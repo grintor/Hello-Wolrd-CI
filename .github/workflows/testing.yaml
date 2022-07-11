@@ -37,9 +37,10 @@ jobs:
         with:
           path: |
             ~/.cache/pip
+            $pythonLocation/lib/python*/site-packages
           key: ${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('requirements.txt') }}
 
-      - name: List the state of node modules
+      - name: List the state of pip modules
         continue-on-error: true
         run: |
           pip cache dir
@@ -93,12 +94,12 @@ jobs:
           git checkout HEAD .github/workflows
           git clean -df .github/workflows
 
-      - name: test with pre-commit
-        # This is the actual pre-commit test run.
-        # It will fail if any linters are unhappy
-        # it will also fail if .github/workflows is untidy
-        run: |
-          pre-commit run --all-files --hook-stage manual
+      # - name: test with pre-commit
+      # # This is the actual pre-commit test run.
+      # # It will fail if any linters are unhappy
+      # # it will also fail if .github/workflows is untidy
+      # run: |
+      # pre-commit run --all-files --hook-stage manual
 
       - name: commit changes
         # this will commit any changes that CI made to the branch
