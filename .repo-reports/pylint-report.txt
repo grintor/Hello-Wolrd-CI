@@ -1,6 +1,4 @@
 output from recursive pylint:
-************* Module .pylintrc.ini
-.pylintrc.ini:1:0: E0015: Unrecognized option found: optimize-ast, files-output, bad-functions, function-name-hint, variable-name-hint, const-name-hint, attr-name-hint, argument-name-hint, class-attribute-name-hint, inlinevar-name-hint, class-name-hint, module-name-hint, method-name-hint (unrecognized-option)
 
 ------------------------------------
 Your code has been rated at 10.00/10
