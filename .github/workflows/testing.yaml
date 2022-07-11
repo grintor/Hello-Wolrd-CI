@@ -20,25 +20,32 @@ jobs:
           echo "github.event.action:" ${{github.event.action}}
           echo "github.actor:" ${{github.actor}}
 
-      - name: attempt checkout with PAT
-        # if we don't use a PAT, then the git push cannot trigger a push event
-        # if there is no push event, then the tests cannot run and auto-merge cannot happen
-        id: checkout_pat
-        uses: actions/checkout@v2
-        continue-on-error: true
-        with:
-          token: ${{ secrets.PAT }}
-
-      - name: fallback to checkout with GITHUB_TOKEN
-        if: steps.checkout_pat.outcome != 'success'
+      - name: checkout with GITHUB_TOKEN
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        id: setup-python
+        uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+
+      - name: Cache pip modules
+        id: cache-pip
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pip
+          key: ${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('requirements.txt') }}
+
+      - if: ${{ steps.cache-pip.outputs.cache-hit == 'false' }}
+        name: List the state of node modules
+        continue-on-error: true
+        run: |
+          pip cache dir
+          pip -V
+          echo '${{ toJSON(steps.setup-python.outputs) }}'
 
       - name: Install dependencies
         run: |
