@@ -63,6 +63,7 @@ jobs:
         run: |
           pip cache dir
           pip -V
+          which pytest
           echo '${{ toJSON(steps.setup-python.outputs) }}'
 
       - name: Install dependencies
