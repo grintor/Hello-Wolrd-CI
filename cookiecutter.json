@@ -1,0 +1,6 @@
+{
+  "project_name": "My Awesome Project",
+  "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
+  "project_owner": "github username or organization name",
+  "version": "0.1.0"
+}
