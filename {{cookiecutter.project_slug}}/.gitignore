@@ -4,3 +4,6 @@ __pycache__
 .coverage
 .doctrees
 /venv
+/node_modules
+/package.json
+/package-lock.json

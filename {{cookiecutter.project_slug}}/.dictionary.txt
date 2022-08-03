@@ -1,3 +1,6 @@
-pytest
+autoflake
 css
+markdownlint
 py
+pylint
+pytest
