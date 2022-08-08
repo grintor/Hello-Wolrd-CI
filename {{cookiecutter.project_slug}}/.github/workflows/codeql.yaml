@@ -1,13 +1,11 @@
 name: codeql workflow
-
+{% raw %}
 on:
   pull_request:
     branches: [main]
 
   schedule:
     - cron: 45 23 * * 5 # Last commit on default branch
-
-{% raw %}
 
 concurrency:
   group: ci-tests-${{github.ref}}-codeql
@@ -43,5 +41,4 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
-
 {% endraw %}

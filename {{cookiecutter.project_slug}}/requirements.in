@@ -2,7 +2,6 @@ pytest
 coverage
 pytest-cov
 pylint
-pyenchant
 pylint_requests
 pre-commit
 sphinx
@@ -18,7 +17,6 @@ flake8-comprehensions
 flake8-print
 darglint
 bandit
-restructuredtext-lint
 boto3
 apig_wsgi
 cruft
