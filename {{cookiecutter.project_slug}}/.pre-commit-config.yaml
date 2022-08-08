@@ -38,7 +38,7 @@ repos:
         language: python
         additional_dependencies: [black==22.6.0]
         types: [python]
-        args: ["--line-length", "119"]
+        args: ["--line-length", "112"]
 
       - id: prettier
         name: prettier
@@ -52,7 +52,8 @@ repos:
         entry: eslint
         language: node
         types_or: [javascript]
-        additional_dependencies: [eslint@8.15.0, eslint-config-prettier@8.5.0, eslint-plugin-no-unsanitized@4.0.1]
+        additional_dependencies:
+          [eslint@8.15.0, eslint-config-prettier@8.5.0, eslint-plugin-no-unsanitized@4.0.1]
         args: [--fix]
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
@@ -79,7 +80,7 @@ repos:
     rev: v1.0.0
     hooks:
       - id: doc8
-        args: ["--max-line-length", "119", "--file-encoding", "utf-8"]
+        args: ["--max-line-length", "112", "--file-encoding", "utf-8"]
 
   - repo: local
     hooks:
@@ -95,7 +96,8 @@ repos:
         entry: stylelint
         language: node
         files: \.(css|scss|sass)$
-        additional_dependencies: [stylelint@14.9.1, stylelint-config-standard@25.0.0, stylelint-config-prettier@9.0.3]
+        additional_dependencies:
+          [stylelint@14.9.1, stylelint-config-standard@25.0.0, stylelint-config-prettier@9.0.3]
 
       - id: flake8
         name: flake8

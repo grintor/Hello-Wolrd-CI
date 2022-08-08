@@ -47,9 +47,9 @@
     },
 
     "python.formatting.provider": "black",
-    "python.formatting.blackArgs": ["--line-length", "119"],
+    "python.formatting.blackArgs": ["--line-length", "112"],
 
-    "editor.rulers": [119],
+    "editor.rulers": [112],
 
     "python.linting.enabled": true,
     "python.linting.cwd": "${workspaceFolder}",
