@@ -32,32 +32,33 @@ repos:
 
   - repo: local
     hooks:
-      - id: markdownlint
-        name: markdownlint
-        entry: markdownlint --fix
-        language: system
-        types: [markdown]
-
       - id: black
         name: black
         entry: black
-        language: system
+        language: python
+        additional_dependencies: [black==22.6.0]
         types: [python]
         args: ["--line-length", "119"]
 
       - id: prettier
         name: prettier
         entry: prettier --write --list-different --ignore-unknown
-        language: system
+        language: node
         types_or: [css, javascript, html, yaml, json, markdown]
+        additional_dependencies: [prettier@2.7.1]
 
       - id: eslint
         name: eslint
         entry: eslint
-        language: system
-        types: [javascript]
+        language: node
+        types_or: [javascript]
+        additional_dependencies: [eslint@8.15.0, eslint-config-prettier@8.5.0, eslint-plugin-no-unsanitized@4.0.1]
         args: [--fix]
-      # additional_dependencies: [eslint@8.15.0, eslint-config-prettier@8.5.0, eslint-plugin-no-unsanitized@4.0.1]
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.32.1
+    hooks:
+      - id: markdownlint-fix
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.2.0
@@ -75,50 +76,59 @@ repos:
         types_or: [css, javascript, html, markdown, python]
 
   - repo: https://github.com/PyCQA/doc8
-    rev: 0.11.2
+    rev: v1.0.0
     hooks:
       - id: doc8
         args: ["--max-line-length", "119", "--file-encoding", "utf-8"]
 
-  - repo: https://github.com/Lucas-C/pre-commit-hooks-java
-    rev: 1.3.10
-    hooks:
-      - id: validate-html
-        exclude: ^tests/
-        name: html validate
-
   - repo: local
     hooks:
+      - id: html5validator
+        name: html5validator
+        entry: html5validator
+        language: python
+        files: .*\.(html|hbs|jinja)$
+        additional_dependencies: [html5validator==0.4.2]
+
+      - id: stylelint
+        name: stylelint
+        entry: stylelint
+        language: node
+        files: \.(css|scss|sass)$
+        additional_dependencies: [stylelint@14.9.1, stylelint-config-standard@25.0.0, stylelint-config-prettier@9.0.3]
+
       - id: flake8
         name: flake8
         entry: flake8
-        language: system
+        language: python
         types: [python]
         args: [--config, .flake8.ini]
-      # additional_dependencies: [ flake8-pytest-style, flake8-bugbear, flake8-comprehensions, flake8-print, darglint]
+        additional_dependencies:
+          [
+            flake8==5.0.4,
+            flake8-pytest-style==1.6.0,
+            flake8-bugbear==22.7.1,
+            flake8-comprehensions==3.10.0,
+            flake8-print==5.0.0,
+            darglint==1.8.1,
+          ]
       # and maybe add flake8-simplify?
 
-      - id: restructuredtext_lint
+      - id: restructuredtext-lint
         exclude: ^docs-src/ # exclude docs src because that is sphinx rst not normal rst (doc8 is for sphinx)
         name: rst lint
         entry: rst-lint --encoding utf-8
-        additional_dependencies: [restructuredtext_lint]
+        additional_dependencies: [restructuredtext-lint==1.4.0]
         types: [rst]
         language: python
 
       - id: bandit
         name: bandit
         entry: bandit
-        language: system
+        language: python
         types: [python]
+        additional_dependencies: [bandit==1.7.4]
         args: [--severity-level=high, --confidence-level=high]
-
-      - id: stylelint
-        name: stylelint
-        entry: stylelint
-        language: system
-        files: \.(css|scss|sass)$
-      # additional_dependencies: [stylelint@14.8.2, stylelint-config-standard@25.0.0, stylelint-config-prettier@9.0.3]
 
       - id: pylint
         name: pylint

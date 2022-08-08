@@ -1,8 +1,8 @@
 name: automerge workflow
+{% raw %}
 on:
   pull_request_target:
 
-{% raw %}
 jobs:
   automerge_job:
     name: automerge job

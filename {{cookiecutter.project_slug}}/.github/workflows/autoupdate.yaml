@@ -1,12 +1,10 @@
 name: autoupdate workflow
-
+{% raw %}
 on:
   pull_request:
     branches: [main]
   push:
     branches: [main]
-
-{% raw %}
 
 concurrency:
   group: ci-tests-${{github.ref}}-autoupdate
@@ -22,5 +20,4 @@ jobs:
         env:
           GITHUB_TOKEN: "${{secrets.GITHUB_TOKEN}}"
           PR_FILTER: "protected"
-
 {% endraw %}
