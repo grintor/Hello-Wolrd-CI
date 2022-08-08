@@ -133,5 +133,4 @@ jobs:
           git add .
           git commit -am "🤖 Automated CI update"
           git push
-        continue-on-error: true
-{% endraw %}
+        continue-on-error: true{% endraw %}
